@@ -3,11 +3,14 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+//import pull from "./test.html";
 import "bootstrap/dist/css/bootstrap.css";
+
+//const root = document.getElementById('test.html');
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App />,
   </React.StrictMode>,
   document.getElementById("root")
 );
