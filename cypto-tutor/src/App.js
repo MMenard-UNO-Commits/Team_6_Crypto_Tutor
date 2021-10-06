@@ -1,6 +1,4 @@
 import "./App.css";
-import "./Pull.php";
-//import "./test.html";
 import React, { Component } from "react";
 //import Questionform from "./components/questionform";
 
@@ -28,7 +26,7 @@ class App extends Component {
     //now they need to be processed in the backend
     alert("Forms submitted successfully");
   
-    window.location = "Pull.php";
+    window.location = "http://localhost:80/learnphp/Pull.php";
     console.log(this.state.studentName);
     console.log(this.state.studentID);
     console.log(this.state.question);
