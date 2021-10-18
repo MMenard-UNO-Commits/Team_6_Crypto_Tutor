@@ -3,13 +3,18 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 export default function QuestionPage() {
-    const [name, setName] = useState("");
-    const [id, setID] = useState("");
-    const [question, setQuestion] = useState("");
-    const [description, setDescription] = useState("");
+  const [name, setName] = useState("");
+  const [id, setID] = useState("");
+  const [question, setQuestion] = useState("");
+  const [description, setDescription] = useState("");
 
   function validateForm() {
-    return name.length > 0 && id.length > 0 && question.length > 0 && description.length > 0;
+    return (
+      name.length > 0 &&
+      id.length > 0 &&
+      question.length > 0 &&
+      description.length > 0
+    );
   }
 
   function handleSubmit(event) {
@@ -17,12 +22,13 @@ export default function QuestionPage() {
   }
 
   return (
-    <div className="Question Form">
+    <div className="p-3 mb-2 bg-light bg-opacity-20 text-dark">
       <Form onSubmit={handleSubmit}>
-      <Form.Group size="lg" controlId="ID">
+        <Form.Group size="lg" controlId="ID">
           <Form.Label>Name</Form.Label>
           <Form.Control
             autoFocus
+            className=".form-control-sm"
             type="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -39,29 +45,36 @@ export default function QuestionPage() {
         </Form.Group>
         <Form.Group size="lg" controlId="password">
           <Form.Label>Question</Form.Label>
-          <Form.Control
+          <textarea
+            className="form-control"
             type="question"
+            placeholder="Type a Question"
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
           />
         </Form.Group>
         <Form.Group size="lg" controlId="ID">
           <Form.Label>Description</Form.Label>
-          <Form.Control
-            autoFocus
+          <textarea
+            className="form-control"
             type="description"
+            placeholder="Enter code fragment"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </Form.Group>
-        <Button block size="lg" type="submit" disabled={!validateForm()}>
+        <Button
+          className="btn btn-info m-3"
+          size="lg"
+          type="button"
+          disabled={!validateForm()}
+        >
           Submit
         </Button>
       </Form>
     </div>
   );
 }
-
 
 // import React, { Component } from "react";
 
@@ -88,7 +101,7 @@ export default function QuestionPage() {
 //     //TODO: ALl the values of the input field are stored in the variable, \
 //     //now they need to be processed in the backend
 //     alert("Forms submitted successfully");
-  
+
 //     window.location = "http://localhost:80/learnphp/Pull.php";
 //     console.log(this.state.studentName);
 //     console.log(this.state.studentID);

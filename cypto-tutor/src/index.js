@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 //import pull from "./test.html";
 import "bootstrap/dist/css/bootstrap.css";
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from "react-router-dom";
 
 //const root = document.getElementById('test.html');
 
