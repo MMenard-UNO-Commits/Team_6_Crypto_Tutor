@@ -19,6 +19,15 @@ export default function QuestionPage() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    var xhr = new XMLHttpRequest()
+
+    xhr.addEventListener('load', () => {
+      console.log(xhr.responseText)
+    })
+
+    xhr.open('POST', 'http://104.131.172.9:8080/server/api')
+    xhr.send(JSON.stringify({code: e.target.description}))
   }
 
   return (
@@ -66,7 +75,7 @@ export default function QuestionPage() {
         <Button
           className="btn btn-info m-3"
           size="lg"
-          type="button"
+          type="submit"
           disabled={!validateForm()}
         >
           Submit

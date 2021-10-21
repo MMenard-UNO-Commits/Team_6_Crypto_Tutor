@@ -81,7 +81,7 @@ public class ApiServlet extends HttpServlet {
             System.out.println("Command Sent!");
 
             while (channel.isConnected()) {
-                Thread.sleep(100);
+                Thread.sleep(10);
             }
 
             String responseString = new String(responseStream.toByteArray());
