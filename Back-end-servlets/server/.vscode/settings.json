@@ -1,0 +1,6 @@
+{
+    "git.ignoreLimitWarning": true,
+    "maven.executable.preferMavenWrapper": false,
+    "maven.executable.path": "/Users/michaelmenard/opt/apache-maven-3.8.3/apache-maven-3.8.3/bin/mvn",
+    "java.configuration.updateBuildConfiguration": "automatic"
+}
