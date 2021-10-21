@@ -21,14 +21,7 @@ public class ApiServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String input1 = "\"public void execute() {\n" + "    super.execute();\n" + "\n"
-                + "     UndoManager um = getDrawingEditor().getUndoManager();\n"
-                + "     if ((um == null) || !um.isRedoable()) {\n" + "        return;\n" + "}\n" + "\n"
-                + "     Undoable lastRedoable = um.popRedo();\n" + "    // Execute redo \n"
-                + "     boolean hasBeenUndone = lastRedoable.redo();\n" + "  // Add to undo stack\n"
-                + "     if (hasBeenUndone && lastRedoable.isUndoable()) {\n" + "        um.pushUndo(lastRedoable);\n"
-                + "}\n" + "\n" + "     lastRedoable.getDrawingView().checkDamage();\n" + "\n"
-                + "     getDrawingEditor().figureSelectionChanged(lastRedoable.getDrawingView());\n" + "}\n\"";
+        String input1 = "\"" + request.getParameter("code") + "\"";
         String inputCommand1 = "echo " + input1 + ">tempComp/thing1.java";
         String input2 = "\"public void execute() {\n" + "    super.execute();\n"
                 + "     UndoManager um = getDrawingEditor().getUndoManager();\n"
