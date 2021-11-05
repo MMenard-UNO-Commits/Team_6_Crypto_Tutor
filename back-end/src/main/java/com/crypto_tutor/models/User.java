@@ -22,13 +22,6 @@ public class User {
 
     public User() {
     }
-
-    public User(String username, String password, int schoolID, int userType) {
-        this.username = username;
-        this.password = password;
-        this.schoolID = schoolID;
-        this.userType = userType;
-    }
     
     public String getUsername() {
         return username;

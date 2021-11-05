@@ -1,4 +1,4 @@
-package com.crypto_tutor.backend;
+package com.crypto_tutor;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
