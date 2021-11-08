@@ -3,7 +3,11 @@ package com.crypto_tutor.controllers;
 import com.crypto_tutor.models.Question;
 import com.crypto_tutor.services.QuestionService;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
+import java.time.LocalTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * This is the controller for the Question
@@ -22,6 +29,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/question")
 public class QuestionController {
     
+    private static final String COMP_DIR = "comparisonFiles";
+
     @Autowired
     QuestionService questionService;
 
@@ -31,9 +40,20 @@ public class QuestionController {
      * @return string saying that we have succeeded
      */
     @PostMapping("/add")
-    public String add(@RequestBody Question Question) {
-        questionService.saveQuestion(Question);
-        return "a new question has been added";
+    public String add(@RequestBody Question question, HttpServletRequest request) throws IOException, ServletException {
+        questionService.saveQuestion(question);
+        String appPath = request.getServletContext().getRealPath("");
+        String properPath = appPath + File.separator + COMP_DIR;
+        File fileSaveDir = new File(properPath);
+        if(!fileSaveDir.exists()) {
+            System.out.println("created!");
+            fileSaveDir.mkdir();
+        }
+        LocalTime time = LocalTime.now();
+        FileWriter codeFile = new FileWriter(properPath + File.separator + question.getUsername() + "-" + time.toString() + ".java");
+        codeFile.write(question.getCodeFragment());
+        codeFile.close();
+        return "a new question has been added at" + properPath;
     }
 
     @GetMapping("/getAll")
