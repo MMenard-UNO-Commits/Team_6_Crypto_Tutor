@@ -71,4 +71,10 @@ public class QuestionController {
         console.exec("echo thing>thing.txt");
     }
 
+    @PostMapping("/addquestion")
+    public String test(@RequestBody Question question){
+        questionService.saveQuestion(question);
+        return "questions added";
+    }
+
 }

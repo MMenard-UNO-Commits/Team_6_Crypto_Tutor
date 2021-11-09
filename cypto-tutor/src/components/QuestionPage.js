@@ -6,28 +6,29 @@ export default function QuestionPage() {
   const [name, setName] = useState("");
   const [id, setID] = useState("");
   const [question, setQuestion] = useState("");
-  const [description, setDescription] = useState("");
+  const [codeFragment, setCodeFragment] = useState("");
+  const [questions, setQuestions] = useState([]);
 
   function validateForm() {
     return (
       name.length > 0 &&
       id.length > 0 &&
       question.length > 0 &&
-      description.length > 0
+      codeFragment.length > 0
     );
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    var xhr = new XMLHttpRequest()
-
-    xhr.addEventListener('load', () => {
-      console.log(xhr.responseText)
-    })
-
-    xhr.open('POST', 'http://104.131.172.9:8080/server/api')
-    xhr.send(JSON.stringify({code: e.target.description}))
+    console.log("form submitted");
+    const ques = {name, id,question,codeFragment}
+    fetch("http://localhost:8080/question/addquestion", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(ques),
+    }).then(() => {
+      console.log("New Question added");
+    });
   }
 
   return (
@@ -44,7 +45,7 @@ export default function QuestionPage() {
           />
         </Form.Group>
         <Form.Group size="lg" controlId="ID">
-          <Form.Label>ID</Form.Label>
+          <Form.Label>Student ID</Form.Label>
           <Form.Control
             autoFocus
             type="id"
@@ -63,13 +64,13 @@ export default function QuestionPage() {
           />
         </Form.Group>
         <Form.Group size="lg" controlId="ID">
-          <Form.Label>Description</Form.Label>
+          <Form.Label>Code Fragment</Form.Label>
           <textarea
             className="form-control"
             type="description"
             placeholder="Enter code fragment"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={codeFragment}
+            onChange={(e) => setCodeFragment(e.target.value)}
           />
         </Form.Group>
         <Button
