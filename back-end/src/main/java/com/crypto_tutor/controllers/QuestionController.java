@@ -83,12 +83,12 @@ public class QuestionController {
     public static String doComparison() {
         String result = "";
         try {
-            Process p = Runtime.getRuntime().exec(new String[] { "./hello.sh" });
+            Process p = Runtime.getRuntime().exec(new String[] { "./hello.sh > output.txt" });
             BufferedReader stdout = new BufferedReader(new InputStreamReader(p.getInputStream()));
             BufferedReader stderr = new BufferedReader(new InputStreamReader(p.getErrorStream()));
             String line;
             while ((line = stdout.readLine()) != null) {
-                result += line + "\n";
+                System.out.println(line);
             }
             while ((line = stderr.readLine()) != null) {
                 result += line + "\n";
