@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.time.LocalTime;
+import java.lang.Runtime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,13 +23,14 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * This is the controller for the Question
+ * 
  * @author Tommy Nelson
  */
 @CrossOrigin
 @RestController
 @RequestMapping("/question")
 public class QuestionController {
-    
+
     private static final String COMP_DIR = "comparisonFiles";
 
     @Autowired
@@ -36,6 +38,7 @@ public class QuestionController {
 
     /**
      * this will save the question and returns a string saying that it succeeded.
+     * 
      * @param Question the question we want to save
      * @return string saying that we have succeeded
      */
@@ -45,21 +48,27 @@ public class QuestionController {
         String appPath = request.getServletContext().getRealPath("");
         String properPath = appPath + File.separator + COMP_DIR;
         File fileSaveDir = new File(properPath);
-        if(!fileSaveDir.exists()) {
+        if (!fileSaveDir.exists()) {
             System.out.println("created!");
             fileSaveDir.mkdir();
         }
         LocalTime time = LocalTime.now();
-        FileWriter codeFile = new FileWriter(properPath + File.separator + question.getUsername() + "-" + time.toString() + ".java");
+        FileWriter codeFile = new FileWriter(
+                properPath + File.separator + question.getUsername() + "-" + time.toString() + ".java");
         codeFile.write(question.getCodeFragment());
         codeFile.close();
         return "a new question has been added at" + properPath;
     }
 
     @GetMapping("/getAll")
-    public List<Question> getAllQuestions()
-    {
+    public List<Question> getAllQuestions() {
         return questionService.getAllQuestions();
+    }
+
+    @GetMapping("/compareAll")
+    public void doComparison() throws IOException {
+        Runtime console = Runtime.getRuntime();
+        console.exec("echo thing>thing.txt");
     }
 
 }

@@ -65,6 +65,12 @@
 						<resource>
 							<directory>NiCad-Location</directory>
 						</resource>
+						<resource>
+							<directory>batchFiles</directory>
+						</resource>
+						<resource>
+							<directory>comparisonFilesContainer</directory>
+						</resource>
 					</webResources>
 				</configuration>
 			</plugin>
