@@ -17,5 +17,9 @@ public interface QuestionService {
      */
     public Question saveQuestion(Question Question);
 
+    /**
+     * this returns all questions in the database
+     * @return the questions as a list
+     */
     public List<Question> getAllQuestions();
 }

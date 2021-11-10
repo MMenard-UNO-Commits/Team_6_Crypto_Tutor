@@ -62,6 +62,10 @@ public class QuestionController {
         return "a new question has been added";
     }
 
+    /**
+     * this returns all questions as a list for output on a url good for testing
+     * @return the list of questions
+     */
     @GetMapping("/getAll")
     public List<Question> getAllQuestions() {
         return questionService.getAllQuestions();
