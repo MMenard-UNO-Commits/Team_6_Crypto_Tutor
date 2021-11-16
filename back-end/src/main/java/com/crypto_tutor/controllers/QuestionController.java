@@ -2,6 +2,7 @@ package com.crypto_tutor.controllers;
 
 import com.crypto_tutor.models.Question;
 import com.crypto_tutor.services.QuestionService;
+import com.crypto_tutor.util.testJsoup;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -102,6 +103,14 @@ public class QuestionController {
         } catch (Exception e) {
         }
         return result;
+    }
+
+    @GetMapping("/testJsoup")
+    public static String doTestJsoup() {
+        String htmlResult = testJsoup.parseHTML("/var/lib/tomcat9/webapps/back-end-0.0.1-SNAPSHOT/" 
+                        + "comparisonFiles_functions-blind-clones/comparisonFiles_functions-blind-clones-0.30-classes-withsource.html");
+        System.out.println(htmlResult);
+        return "Success!";
     }
 
     @PostMapping("/addquestion")
