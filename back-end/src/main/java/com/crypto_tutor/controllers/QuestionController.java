@@ -93,12 +93,11 @@ public class QuestionController {
     }
 
     @GetMapping("/testJsoup")
-    public static String doTestJsoup(HttpServletRequest request) {
+    public static String doTestJsoup() {
         String htmlResult = testJsoup.parseHTML("/var/lib/tomcat9/webapps/back-end-0.0.1-SNAPSHOT/" 
-                        + "comparisonFiles_functions-blind-clones/comparisonFiles_functions-blind-clones-0.30-classes-withsource.html",
-                        request);
+                        + "comparisonFiles_functions-blind-clones/comparisonFiles_functions-blind-clones-0.30-classes-withsource.html");
         System.out.println(htmlResult);
-        return "Success! \n" + htmlResult;
+        return htmlResult;
     }
 
     @PostMapping("/addquestion")
