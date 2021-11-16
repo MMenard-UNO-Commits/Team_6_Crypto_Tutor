@@ -6,3 +6,7 @@ Students will be able to enter a question that they have with a relevant code sn
 Students and faculty can also go through the list of questions from newest to oldest and respond to them in a forum-like style. They do this by selecting the question and selecting the option to answer the question. From there they can put in a code snippet of their own, as well as a description of the code and a recommendation of action for the user who asked the question.
 
 Update 0.1: During this update we created a basic starting UI for our system that includes fields for a student name and ID, as well as a question field where the code snippet goes and a description fields where a description of the problem can be specified.
+
+Update 0.2: Worked on creating basic NiCad comparison functionality and displaying it to a sample webpage using PHP and Java servlet.
+
+Update 0.3: Refactored the project to work with spring boot as a backend instead of PHP. Created some models for our repositories and added functionality for creating java files when questions are submitted.
