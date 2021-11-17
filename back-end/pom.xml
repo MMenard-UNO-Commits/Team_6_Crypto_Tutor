@@ -15,7 +15,7 @@
 	<name>back-end</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -67,9 +67,6 @@
 				<version>3.3.2</version>
 				<configuration>
 					<webResources>
-						<resource>
-							<directory>NiCad-Location</directory>
-						</resource>
 						<resource>
 							<directory>batchFiles</directory>
 						</resource>
