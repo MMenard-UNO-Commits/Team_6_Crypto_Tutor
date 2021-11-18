@@ -30,5 +30,73 @@ public class UnitTestAnswer {
         int output = test.getSchoolId();
         assertEquals(0, output);
     }
+
+    /**
+     * testing the setter and getter for answer in answer
+     */
+    @Test
+    void testSetAnswer()
+    {
+        Answer test = new Answer();
+        test.setAnswer("this is a mock answer");
+        String output = test.getAnswer();
+        assertEquals("this is a mock answer", output);
+    }
     
+    /**
+     * testing the getter with null answer
+     */
+    @Test
+    void testGetNullAnswer()
+    {
+        Answer test = new Answer();
+        String output = test.getAnswer();
+        assertEquals(null, output);
+    }
+
+    /**
+     * testing the setter and getter for username
+     */
+    @Test
+    void setUsername()
+    {
+        Answer test = new Answer();
+        test.setUserName("tdnelson");
+        String output = test.getUserName();
+        assertEquals("tdnelson", output);
+    }
+    
+    /**
+     * testing the gettter when username is null
+     */
+    @Test
+    void getNullAnswer()
+    {
+        Answer test = new Answer();
+        String output = test.getUserName();
+        assertEquals(null, output);
+    }
+
+    /**
+     * tersting setter and getter for question id
+     */
+    @Test
+    void testSetQuestionId()
+    {
+        Answer test = new Answer();
+        test.setQuestionId(1);
+        int output = test.getQuestionId();
+        assertEquals(1, output);
+    }
+
+    /**
+     * testing getter when no question id is present
+     */
+    @Test
+    void testGetNullQuestionId()
+    {
+        Answer test = new Answer();
+        int output = test.getQuestionId();
+        assertEquals(0, output);
+    }
 }
