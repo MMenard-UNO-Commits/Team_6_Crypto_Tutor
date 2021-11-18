@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
  * this is the testing class for Question at the moment might make other for the other models to make it no clustered, or might add them here
  * @author Tommy Nelson
  */
-public class unitTesting {
+public class UnitTestQuestion {
 
     /**
      * tests the getter and setter of the question field for Question
@@ -111,5 +111,13 @@ public class unitTesting {
         Question question = new Question();
         text = question.getUsername();
         assertEquals(null, text);
+
+
+
+
+
+       
+
+        
     }
 }
