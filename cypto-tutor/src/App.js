@@ -28,7 +28,6 @@ function App() {
         </>
       )}
       <HeaderComponent />
-      <FooterComponent />
       <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
         <Routes />
       </AppContext.Provider>

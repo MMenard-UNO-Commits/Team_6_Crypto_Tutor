@@ -1,0 +1,9 @@
+#!/bin/bash
+cd NiCad-6.2
+./nicad6 functions java /var/lib/tomcat9/webapps/back-end-0.0.1-SNAPSHOT/comparisonFiles default-report
+#cd tempComp_functions-blind-clones/
+#input="tempComp_functions-blind-clones-0.30-classes-withsource.html"
+#while IFS= read -r line
+#do
+#  echo "$line"
+#done < "$input"

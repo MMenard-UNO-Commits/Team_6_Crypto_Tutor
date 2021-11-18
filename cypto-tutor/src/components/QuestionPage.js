@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
+
 export default function QuestionPage() {
-  const [name, setName] = useState("");
-  const [id, setID] = useState("");
+  const [username, setName] = useState("");
+  const [studentId, setID] = useState("");
   const [question, setQuestion] = useState("");
   const [codeFragment, setCodeFragment] = useState("");
   const [questions, setQuestions] = useState([]);
+  const test = ['one', 'two', 'three'];
 
   function validateForm() {
     return (
-      name.length > 0 &&
-      id.length > 0 &&
+      username.length > 0 &&
+      studentId.length > 0 &&
       question.length > 0 &&
       codeFragment.length > 0
     );
@@ -21,7 +23,7 @@ export default function QuestionPage() {
   function handleSubmit(event) {
     event.preventDefault();
     console.log("form submitted");
-    const ques = {name, id,question,codeFragment}
+    const ques = {username, studentId,question,codeFragment}
     fetch("http://localhost:8080/question/addquestion", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -31,8 +33,34 @@ export default function QuestionPage() {
     });
   }
 
+  useEffect(() => {
+    const url = "http://localhost:8080/question/getAll";
+
+    // An asynchronous function is a function that needs to wait
+    // after the promise is resolved before continuing. In our
+    //case, the function will need to wait after the data is
+    //fetched (our promise) before continuing.
+    const fetchData = async () => {
+      try {
+        //We put the await keyword just in front of it to tell the function to wait for
+        //the fetch task to be done before running the next line of code.
+        const response = await fetch(url);
+        const json = await response.json();
+        setQuestions(json);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className="p-3 mb-2 bg-light bg-opacity-20 text-dark">
+      <ul>
+        {questions.map((value, index) => {
+          return <li key={index}>{value.username}, {value.studentId}, {value.question}, {value.codeFragment}</li>
+        })}
+      </ul>
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="ID">
           <Form.Label>Name</Form.Label>
@@ -40,7 +68,7 @@ export default function QuestionPage() {
             autoFocus
             className=".form-control-sm"
             type="name"
-            value={name}
+            value={username}
             onChange={(e) => setName(e.target.value)}
           />
         </Form.Group>
@@ -49,7 +77,7 @@ export default function QuestionPage() {
           <Form.Control
             autoFocus
             type="id"
-            value={id}
+            value={studentId}
             onChange={(e) => setID(e.target.value)}
           />
         </Form.Group>
