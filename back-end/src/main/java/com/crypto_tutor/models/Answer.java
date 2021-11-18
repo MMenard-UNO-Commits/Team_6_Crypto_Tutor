@@ -70,7 +70,7 @@ public class Answer {
      * this gets the student id of the user who answered the quetsion
      * @return id of the student as an int
      */
-    public int getStudentId()
+    public int getSchoolId()
     {
         return studentId;
     }
@@ -79,7 +79,7 @@ public class Answer {
      * this sets the id of the student who answered a question 
      * @param input the id of the student
      */
-    public void setStudentId(int input)
+    public void setSchoolId(int input)
     {
         studentId = input;
     }
