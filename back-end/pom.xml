@@ -15,7 +15,7 @@
 	<name>back-end</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -48,6 +48,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+    		<groupId>org.jsoup</groupId>
+    		<artifactId>jsoup</artifactId>
+    		<version>1.14.3</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -62,9 +67,6 @@
 				<version>3.3.2</version>
 				<configuration>
 					<webResources>
-						<resource>
-							<directory>NiCad-Location</directory>
-						</resource>
 						<resource>
 							<directory>batchFiles</directory>
 						</resource>

@@ -2,6 +2,7 @@ package com.crypto_tutor.controllers;
 
 import com.crypto_tutor.models.Question;
 import com.crypto_tutor.services.QuestionService;
+import com.crypto_tutor.util.testJsoup;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -51,7 +52,6 @@ public class QuestionController {
         String properPath = appPath + File.separator + COMP_DIR;
         File fileSaveDir = new File(properPath);
         if (!fileSaveDir.exists()) {
-            System.out.println("created!");
             fileSaveDir.mkdir();
         }
         LocalTime time = LocalTime.now();
@@ -71,23 +71,11 @@ public class QuestionController {
         return questionService.getAllQuestions();
     }
 
-    /*
-     * @GetMapping("/compareAll") public String doComparison() throws IOException,
-     * InterruptedException { Runtime console = Runtime.getRuntime(); Process p =
-     * console.exec("./hello.sh"); BufferedReader stdout = new BufferedReader(new
-     * InputStreamReader(p.getInputStream())); String line; String outLine =
-     * "Error!"; while ((line = stdout.readLine()) != null) { outLine = line; }
-     * p.waitFor(); // p = console.exec("pwd"); // stdout = new BufferedReader(new
-     * InputStreamReader(p.getInputStream())); // line = ""; // outLine = "Error!";
-     * // while ((line = stdout.readLine()) != null) { // outLine = line; // } //
-     * p.waitFor(); return outLine; }
-     */
-
     @GetMapping("/compareAll")
     public static String doComparison() {
         String result = "";
         try {
-            Process p = Runtime.getRuntime().exec(new String[] { "./hello.sh > output.txt" });
+            Process p = Runtime.getRuntime().exec(new String[] { "./hello.sh" });
             BufferedReader stdout = new BufferedReader(new InputStreamReader(p.getInputStream()));
             BufferedReader stderr = new BufferedReader(new InputStreamReader(p.getErrorStream()));
             String line;
@@ -102,6 +90,14 @@ public class QuestionController {
         } catch (Exception e) {
         }
         return result;
+    }
+
+    @GetMapping("/testJsoup")
+    public static String doTestJsoup() {
+        String htmlResult = testJsoup.parseHTML("/var/lib/tomcat9/webapps/back-end-0.0.1-SNAPSHOT/" 
+                        + "comparisonFiles_functions-blind-clones/comparisonFiles_functions-blind-clones-0.30-classes-withsource.html");
+        System.out.println(htmlResult);
+        return htmlResult;
     }
 
     @PostMapping("/addquestion")
