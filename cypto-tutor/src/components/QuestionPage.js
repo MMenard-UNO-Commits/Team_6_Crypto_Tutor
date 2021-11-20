@@ -2,19 +2,18 @@ import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-
 export default function QuestionPage() {
-  const [username, setName] = useState("");
-  const [studentId, setID] = useState("");
+  const [name, setName] = useState("");
+  const [id, setID] = useState("");
   const [question, setQuestion] = useState("");
   const [codeFragment, setCodeFragment] = useState("");
   const [questions, setQuestions] = useState([]);
-  const test = ['one', 'two', 'three'];
+  const [past, setPast] = useState("");
 
   function validateForm() {
     return (
-      username.length > 0 &&
-      studentId.length > 0 &&
+      name.length > 0 &&
+      id.length > 0 &&
       question.length > 0 &&
       codeFragment.length > 0
     );
@@ -23,44 +22,50 @@ export default function QuestionPage() {
   function handleSubmit(event) {
     event.preventDefault();
     console.log("form submitted");
-    const ques = {username, studentId,question,codeFragment}
-    fetch("http://localhost:8080/question/addquestion", {
+    const ques = { name, id, question, codeFragment };
+    fetch("http://104.131.172.9:8080/Jsoup-test/question/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(ques),
     }).then(() => {
       console.log("New Question added");
+      var resultWindow = window.open();
+      resultWindow.document.write(past);
     });
   }
-
   useEffect(() => {
-    const url = "http://localhost:8080/question/getAll";
-
-    // An asynchronous function is a function that needs to wait
-    // after the promise is resolved before continuing. In our
-    //case, the function will need to wait after the data is
-    //fetched (our promise) before continuing.
-    const fetchData = async () => {
+    const pastURL = "http://104.131.172.9:8080/Jsoup-test/question/testJsoup ";
+    //const currentURL = "http://localhost:8080/student/getAll2";
+    const fetchPastData = async () => {
       try {
         //We put the await keyword just in front of it to tell the function to wait for
         //the fetch task to be done before running the next line of code.
-        const response = await fetch(url);
-        const json = await response.json();
-        setQuestions(json);
+        const response = await fetch(pastURL);
+        var text = await response.text();
+        var script =
+          '<script language="JavaScript">' +
+          "function ShowHide(divId) {" +
+          "if(document.getElementById(divId).style.display == 'none') {" +
+          "document.getElementById(divId).style.display='block';" +
+          "} else {" +
+          "document.getElementById(divId).style.display = 'none';" +
+          "}" +
+          "}" +
+          "</script>";
+        var finalText = text.concat(script);
+        //setStudents(json);
+        setPast(finalText);
+        console.log(finalText);
       } catch (error) {
         console.log("error", error);
       }
     };
-    fetchData();
+
+    fetchPastData();
   }, []);
 
   return (
     <div className="p-3 mb-2 bg-light bg-opacity-20 text-dark">
-      <ul>
-        {questions.map((value, index) => {
-          return <li key={index}>{value.username}, {value.studentId}, {value.question}, {value.codeFragment}</li>
-        })}
-      </ul>
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="ID">
           <Form.Label>Name</Form.Label>
@@ -68,7 +73,7 @@ export default function QuestionPage() {
             autoFocus
             className=".form-control-sm"
             type="name"
-            value={username}
+            value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </Form.Group>
@@ -77,7 +82,7 @@ export default function QuestionPage() {
           <Form.Control
             autoFocus
             type="id"
-            value={studentId}
+            value={id}
             onChange={(e) => setID(e.target.value)}
           />
         </Form.Group>
@@ -113,104 +118,3 @@ export default function QuestionPage() {
     </div>
   );
 }
-
-// import React, { Component } from "react";
-
-// class questionpage extends Component() {
-//   state = {
-//     studentName: "",
-//     studentID: "",
-//     question: "",
-//     description: "",
-//   };
-
-//   /*handleAdd = async (e) => {
-//     await this.setState({
-//       studdentName: e.target.value,
-//       studentID: e.target.value,
-//       question: e.target.value,
-//       description: e.target.value,
-//     });
-//   };
-// */
-//   handleSubmit = (e) => {
-//     e.preventDefault();
-
-//     //TODO: ALl the values of the input field are stored in the variable, \
-//     //now they need to be processed in the backend
-//     alert("Forms submitted successfully");
-
-//     window.location = "http://localhost:80/learnphp/Pull.php";
-//     console.log(this.state.studentName);
-//     console.log(this.state.studentID);
-//     console.log(this.state.question);
-//     console.log(this.state.description);
-//   };
-//   render() {
-//     return (
-//       <div className="p-3 mb-2 bg-light bg-opacity-50 text-dark">
-//         <h1>Submit Question</h1>
-//         <form className="forms">
-//           <fieldset>
-//             <label>Student Name</label>
-//             <br />
-//             <input
-//               className=".form-control-sm"
-//               name="name"
-//               value={this.state.studentName}
-//               onChange={(event) =>
-//                 this.setState({ studentName: event.target.value })
-//               }
-//               placeholder="Your name"
-//             />
-//             <br />
-//             <label>Student ID</label>
-//             <br/>
-//             <input
-//               className=".form-control-sm m-1"
-//               name="id"
-//               value={this.state.studentID}
-//               onChange={(event) =>
-//                 this.setState({ studentID: event.target.value })
-//               }
-//               placeholder="Your ID"
-//             />
-//             <br />
-//             <label>Question</label>
-//             <textarea
-//               className="form-control"
-//               rows="7"
-//               name="question"
-//               value={this.state.question}
-//               onChange={(event) =>
-//                 this.setState({ question: event.target.value })
-//               }
-//               placeholder="Type a Question"
-//             />
-//             <br />
-//             <label>Description</label>
-//             <textarea
-//               className="form-control"
-//               name="description"
-//               rows="7"
-//               value={this.state.description}
-//               onChange={(event) =>
-//                 this.setState({ description: event.target.value })
-//               }
-//               placeholder="Type a code fragments"
-//             />
-//           </fieldset>
-//           <button
-//             onClick={this.handleSubmit}
-//             type="submit"
-//             className="btn btn-outline-success m-3"
-//           >
-//             Submit
-//           </button>
-//         </form>
-//       </div>
-//     );
-//   }
-// }
-
-// export default questionpage;
