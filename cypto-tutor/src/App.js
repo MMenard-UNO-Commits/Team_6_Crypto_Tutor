@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { Component, useState } from "react";
+import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { LinkContainer } from "react-router-bootstrap";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -11,18 +12,41 @@ import Preferences from './components/Preferences';
 import Login from "./components/Login";
 import Question from "./components/QuestionPage";
 import useToken from './components/useToken';
+import NotFound from './components/NotFound';
 import Parser from 'html-react-parser';
 //import Questionform from "./components/questionform";
 
 function App() {
-  const {token, setToken} = useToken();
+  const {token, setToken} = useToken();  
+
   if(!token) {
     return <Login setToken={setToken} /> //If not logged in, shows this page until successful login
   }
+  //Add route path to add new page to application
+  //If improper route is specified in URL, returns 404 error page
+
+  //Need better solution for logout button but it works for now
   return (
     <div className="wrapper">
-      <h1>CryptoTutor</h1>
       <BrowserRouter>
+      <Navbar>
+        <LinkContainer to="/dashboard">
+          <Navbar.Brand>
+            CryptoTutor
+          </Navbar.Brand>
+        </LinkContainer>
+        <Navbar.Toggle />
+        <Navbar.Collapse>
+          <Nav activeKey={window.location.pathname}>
+            <LinkContainer to="/questionpage">
+              <Nav.Link>Ask Question</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/">
+              <Nav.Link onClick={() => {localStorage.clear(); window.location.reload(false);}}>Log Out</Nav.Link>
+            </LinkContainer>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
         <Switch>
           <Route path="/dashboard">
             <Dashboard />
@@ -33,8 +57,12 @@ function App() {
           <Route path="/questionpage">
             <Question />
           </Route>
+          <Route>
+            <NotFound />
+          </Route>
         </Switch>
       </BrowserRouter>
+      <FooterComponent />
     </div>
   );
 }
