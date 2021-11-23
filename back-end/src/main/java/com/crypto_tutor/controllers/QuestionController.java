@@ -46,13 +46,9 @@ public class QuestionController {
         String appPath = request.getServletContext().getRealPath("");
         String properPath = appPath + File.separator + COMP_DIR;
 
-        System.out.println("Before methods run!");
         String newFileName = QuestionHelper.saveToFile(question, properPath);
-        System.out.println("After saveToFile method!");
         QuestionHelper.doComparison();
-        System.out.println("After doComparison method!");
         String htmlResult = QuestionHelper.parseHTML(newFileName);
-        System.out.println("After parseHTML method!");
         System.out.println(htmlResult);
         return htmlResult;
     }

@@ -20,54 +20,64 @@ public class QuestionHelper {
     public static final String DIR_LOC = "/var/lib/tomcat9/webapps/back-end-0.0.1-SNAPSHOT/" 
         + "comparisonFiles_functions-blind-clones/comparisonFiles_functions-blind-clones-0.30-classes-withsource.html";
 
+    /**
+     * this will save the question's code fragment as a file
+     * 
+     * @param Question the question for the code fragment needed to be saved
+     * @param String the base address of where the file will be saved
+     * @return the file name of the newly created file
+     */
     public static String saveToFile(Question question, String properPath) throws IOException, ServletException {
         File fileSaveDir = new File(properPath);
         if (!fileSaveDir.exists()) {
             fileSaveDir.mkdir();
         }
         LocalTime time = LocalTime.now();
-        String newFileName = properPath + File.separator + question.getUsername() + "-" + time.toString() + ".java";
-        FileWriter codeFile = new FileWriter(newFileName);
+        String newFileName = question.getUsername() + "-" + time.toString() + ".java";
+        FileWriter codeFile = new FileWriter(properPath + File.separator + newFileName);
         codeFile.write(question.getCodeFragment());
         codeFile.close();
-        return newFileName;
+        return "comparisonFiles" + File.separator + newFileName;
     }
 
+    /**
+     * this will run NiCad to create comparison results
+     * 
+     * @return ant errors that may be produced by NiCad
+     */
     public static String doComparison() {
         String result = "";
         try {
             Process p = Runtime.getRuntime().exec(new String[] { "./hello.sh" });
-            System.out.println("doComparison method: Checkpoint #1");
             BufferedReader stdout = new BufferedReader(new InputStreamReader(p.getInputStream()));
             BufferedReader stderr = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-            System.out.println("doComparison method: Checkpoint #2");
             String line;
             while ((line = stdout.readLine()) != null) {
                 System.out.println(line);
             }
-            System.out.println("doComparison method: Checkpoint #3");
             while ((line = stderr.readLine()) != null) {
                 result += line + "\n";
             }
-            System.out.println("doComparison method: Checkpoint #4");
             p.waitFor();
-            System.out.println("doComparison method: Checkpoint #5");
             return result;
         } catch (Exception e) {
         }
         return result;
     }
 
+    /**
+     * this will save the question's code fragment as a file
+     * 
+     * @param String the fileName to be looked for in the HTML
+     * @return the file name of the newly created file
+     */
     public static String parseHTML(String fileName) {
         String result = "";
 
         try {
             File htmlFile = new File(DIR_LOC);
-            System.out.println("parseHTML method: Checkpoint #1");
             Document doc = Jsoup.parse(htmlFile, "UTF-8");
-            System.out.println("parseHTML method: Checkpoint #2");
             Elements inputClones = doc.select("a:contains(" + fileName + ")");
-            System.out.println("parseHTML method: Checkpoint #3");
             int len = inputClones.size();
             String tempStr;
             for (int i  = 0; i < len; i++) {
@@ -87,7 +97,6 @@ public class QuestionHelper {
                     result += tempStr;
                 }
             }
-            System.out.println("parseHTML method: Checkpoint #4");
         } catch (Exception e) {
             e.printStackTrace();
         }
