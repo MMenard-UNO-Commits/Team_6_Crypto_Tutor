@@ -99,4 +99,15 @@ public class UnitTestAnswer {
         int output = test.getQuestionId();
         assertEquals(0, output);
     }
+
+    /**
+     * testing the getAnswerid
+     */
+    @Test
+    void getAnswerId()
+    {
+        Answer test = new Answer();
+        int output = test.getAnswerId();
+        assertEquals(0, output);
+    }
 }
