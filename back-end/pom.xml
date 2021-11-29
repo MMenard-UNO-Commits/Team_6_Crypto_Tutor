@@ -68,9 +68,6 @@
 				<configuration>
 					<webResources>
 						<resource>
-							<directory>batchFiles</directory>
-						</resource>
-						<resource>
 							<directory>comparisonFilesContainer</directory>
 						</resource>
 					</webResources>
