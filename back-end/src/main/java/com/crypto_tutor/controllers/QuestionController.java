@@ -2,16 +2,11 @@ package com.crypto_tutor.controllers;
 
 import com.crypto_tutor.models.Question;
 import com.crypto_tutor.services.QuestionService;
-import com.crypto_tutor.util.testJsoup;
+import com.crypto_tutor.util.QuestionHelper;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.List;
-import java.time.LocalTime;
-import java.lang.Runtime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -50,16 +45,12 @@ public class QuestionController {
         questionService.saveQuestion(question);
         String appPath = request.getServletContext().getRealPath("");
         String properPath = appPath + File.separator + COMP_DIR;
-        File fileSaveDir = new File(properPath);
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdir();
-        }
-        LocalTime time = LocalTime.now();
-        FileWriter codeFile = new FileWriter(
-                properPath + File.separator + question.getUsername() + "-" + time.toString() + ".java");
-        codeFile.write(question.getCodeFragment());
-        codeFile.close();
-        return "a new question has been added";
+
+        String newFileName = QuestionHelper.saveToFile(question, properPath);
+        QuestionHelper.doComparison();
+        String htmlResult = QuestionHelper.parseHTML(newFileName);
+        System.out.println(htmlResult);
+        return htmlResult;
     }
 
     /**
@@ -71,7 +62,7 @@ public class QuestionController {
         return questionService.getAllQuestions();
     }
 
-    @GetMapping("/compareAll")
+    /*@GetMapping("/compareAll")
     public static String doComparison() {
         String result = "";
         try {
@@ -94,11 +85,11 @@ public class QuestionController {
 
     @GetMapping("/testJsoup")
     public static String doTestJsoup() {
-        String htmlResult = testJsoup.parseHTML("/var/lib/tomcat9/webapps/back-end-0.0.1-SNAPSHOT/" 
+        String htmlResult = QuestionHelper.parseHTML("/var/lib/tomcat9/webapps/back-end-0.0.1-SNAPSHOT/" 
                         + "comparisonFiles_functions-blind-clones/comparisonFiles_functions-blind-clones-0.30-classes-withsource.html");
         System.out.println(htmlResult);
         return htmlResult;
-    }
+    }*/
 
     @PostMapping("/addquestion")
     public String test(@RequestBody Question question) {
