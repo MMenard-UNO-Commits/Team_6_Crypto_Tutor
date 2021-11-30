@@ -13,6 +13,7 @@ import com.crypto_tutor.models.Question;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class QuestionHelper {
@@ -82,7 +83,6 @@ public class QuestionHelper {
             String tempStr;
             for (int i  = 0; i < len; i++) {
                 {
-                    System.out.println("parseHTML method: Loop #" + i);
                     tempStr = inputClones.get(i)
                             // Below are 8 levels of the parent() method. Any more and it will retrive the whole file.
                             .parent().parent().parent().parent().parent().parent().parent().parent()
@@ -97,6 +97,22 @@ public class QuestionHelper {
                     result += tempStr;
                 }
             }
+            // TODO: append checkbox elements
+            // with id="frag####"
+            Document editedDoc = Jsoup.parse(result);
+            Elements midDivs = editedDoc.select("div[class=\"mid\"]");
+            len = midDivs.size();
+            Element tempElem;
+            String tempId;
+            for (int i  = 0; i < len; i++) {
+                tempElem = midDivs.get(i);
+                tempId = tempElem.id();
+                tempStr = "<Checkbox fragId=\"" + tempId + "\" onChange={handleChange} inputProps={{ \"aria-label\": \"controlled\"}} />";
+                tempElem.after(tempStr);
+            }
+            //NEED TO GET STRING FROM NEW DOC
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
