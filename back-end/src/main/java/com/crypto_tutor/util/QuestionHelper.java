@@ -27,13 +27,12 @@ public class QuestionHelper {
      * @param String the base address of where the file will be saved
      * @return the file name of the newly created file
      */
-    public static String saveToFile(Question question, String properPath) throws IOException, ServletException {
+    public static String saveToFile(Question question, String fileName, String properPath) throws IOException, ServletException {
         File fileSaveDir = new File(properPath);
         if (!fileSaveDir.exists()) {
             fileSaveDir.mkdir();
         }
-        LocalTime time = LocalTime.now();
-        String newFileName = question.getUsername() + "-" + time.toString() + ".java";
+        String newFileName = fileName;
         FileWriter codeFile = new FileWriter(properPath + File.separator + newFileName);
         codeFile.write(question.getCodeFragment());
         codeFile.close();
@@ -43,7 +42,7 @@ public class QuestionHelper {
     /**
      * this will run NiCad to create comparison results
      * 
-     * @return ant errors that may be produced by NiCad
+     * @return any errors that may be produced by NiCad
      */
     public static String doComparison() {
         String result = "";

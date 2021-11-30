@@ -6,6 +6,7 @@ import com.crypto_tutor.util.QuestionHelper;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,13 +43,17 @@ public class QuestionController {
      */
     @PostMapping("/add")
     public String add(@RequestBody Question question, HttpServletRequest request) throws IOException, ServletException {
+        String creationTime = LocalTime.now().toString();
+        String newFileName = question.getUsername() + "-" + creationTime + ".java";
+        question.setDateTime(creationTime);
+        question.setFileName(newFileName);
         questionService.saveQuestion(question);
         String appPath = request.getServletContext().getRealPath("");
         String properPath = appPath + File.separator + COMP_DIR;
 
-        String newFileName = QuestionHelper.saveToFile(question, properPath);
+        String compareFileName = QuestionHelper.saveToFile(question, newFileName, properPath);
         QuestionHelper.doComparison();
-        String htmlResult = QuestionHelper.parseHTML(newFileName);
+        String htmlResult = QuestionHelper.parseHTML(compareFileName);
         System.out.println(htmlResult);
         return htmlResult;
     }
