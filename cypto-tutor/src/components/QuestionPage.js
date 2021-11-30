@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useHistory } from 'react-router-dom';
 //comment
 
 export default function QuestionPage() {
@@ -10,6 +11,7 @@ export default function QuestionPage() {
   const [codeFragment, setCodeFragment] = useState("");
   const [questions, setQuestions] = useState([]);
   const [past, setPast] = useState("");
+  let history = useHistory();
 
   function validateForm() {
     return (
@@ -30,8 +32,7 @@ export default function QuestionPage() {
       body: JSON.stringify(ques),
     }).then(() => {
       console.log("New Question added");
-      var resultWindow = window.open();
-      resultWindow.document.write(past);
+      history.push("/results");
     });
   }
   useEffect(() => {
