@@ -5,12 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 //import pull from "./test.html";
 import "bootstrap/dist/css/bootstrap.css";
+import { BrowserRouter as Router } from "react-router-dom";
+import Results from "./components/Results";
+import Hook from "./components/Hook";
+import Testing from "./components/Testing";
 
 //const root = document.getElementById('test.html');
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />,
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

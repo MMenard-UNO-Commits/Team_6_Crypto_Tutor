@@ -1,102 +1,81 @@
 import "./App.css";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import { LinkContainer } from "react-router-bootstrap";
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import FooterComponent from "./components/FooterComponent";
+import HeaderComponent from "./components/HeaderComponent";
+import { AppContext, useAppContext } from "./lib/contextLib";
+import Dashboard from './components/Dashboard';
+import Preferences from './components/Preferences';
+import Login from "./components/Login";
+import Question from "./components/QuestionPage";
+import useToken from './components/useToken';
+import NotFound from './components/NotFound';
+import Results from './components/Results';
+import Parser from 'html-react-parser';
+import { CheckboxesProvider } from "./ContextAPI";
+import Hook from "./components/Hook";
 //import Questionform from "./components/questionform";
 
-class App extends Component {
-  state = {
-    studentName: "",
-    studentID: "",
-    question: "",
-    description: "",
-  };
+function App() {
+  const {token, setToken} = useToken();  
 
-  /*handleAdd = async (e) => {
-    await this.setState({
-      studdentName: e.target.value,
-      studentID: e.target.value,
-      question: e.target.value,
-      description: e.target.value,
-    });
-  };
-*/
-  handleSubmit = (e) => {
-    e.preventDefault();
-
-    //TODO: ALl the values of the input field are stored in the variable, \
-    //now they need to be processed in the backend
-    alert("Forms submitted successfully");
-  
-    window.location = "http://localhost:80/learnphp/Pull.php";
-    console.log(this.state.studentName);
-    console.log(this.state.studentID);
-    console.log(this.state.question);
-    console.log(this.state.description);
-  };
-  render() {
-    return (
-      <div className="p-3 mb-2 bg-light bg-opacity-50 text-dark">
-        <h1>Submit Question</h1>
-        <form className="forms">
-          <fieldset>
-            <label>Student Name</label>
-            <br />
-            <input
-              className=".form-control-sm"
-              name="name"
-              value={this.state.studentName}
-              onChange={(event) =>
-                this.setState({ studentName: event.target.value })
-              }
-              placeholder="Your name"
-            />
-            <br />
-            <label>Student ID</label>
-            <br/>
-            <input
-              className=".form-control-sm m-1"
-              name="id"
-              value={this.state.studentID}
-              onChange={(event) =>
-                this.setState({ studentID: event.target.value })
-              }
-              placeholder="Your ID"
-            />
-            <br />
-            <label>Question</label>
-            <textarea
-              className="form-control"
-              rows="7"
-              name="question"
-              value={this.state.question}
-              onChange={(event) =>
-                this.setState({ question: event.target.value })
-              }
-              placeholder="Type a Question"
-            />
-            <br />
-            <label>Description</label>
-            <textarea
-              className="form-control"
-              name="description"
-              rows="7"
-              value={this.state.description}
-              onChange={(event) =>
-                this.setState({ description: event.target.value })
-              }
-              placeholder="Type a code fragments"
-            />
-          </fieldset>
-          <button
-            onClick={this.handleSubmit}
-            type="submit"
-            className="btn btn-outline-success m-3"
-          >
-            Submit
-          </button>
-        </form>
-      </div>
-    );
+  if(!token) {
+    return <Login setToken={setToken} /> //If not logged in, shows this page until successful login
   }
+  //Add route path to add new page to application
+  //If improper route is specified in URL, returns 404 error page
+
+  //Need better solution for logout button but it works for now
+  return (
+    <div className="wrapper">
+      <CheckboxesProvider>
+        <BrowserRouter>
+        <Navbar>
+          <LinkContainer to="/dashboard">
+            <Navbar.Brand>
+              CryptoTutor
+            </Navbar.Brand>
+          </LinkContainer>
+          <Navbar.Toggle />
+          <Navbar.Collapse>
+            <Nav activeKey={window.location.pathname}>
+              <LinkContainer to="/questionpage">
+                <Nav.Link>Ask Question</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/">
+                <Nav.Link onClick={() => {localStorage.clear(); window.location.reload(false);}}>Log Out</Nav.Link>
+              </LinkContainer>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+          <Switch>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+            <Route path="/preferences">
+              <Preferences />
+            </Route>
+            <Route path="/questionpage">
+              <Question />
+            </Route>
+            <Route path="/hook">
+              <Hook />
+            </Route>
+            <Route path="/results">
+              <Results />
+            </Route>
+            <Route>
+              <NotFound />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+        <FooterComponent />
+      </CheckboxesProvider>
+    </div>
+  );
 }
 
 export default App;
