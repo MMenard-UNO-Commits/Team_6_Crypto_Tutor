@@ -254,4 +254,86 @@ public class UnitTestQuestion {
         assertEquals(94326754, text);
         assertEquals(10304050, text2);
     }
+
+    /**
+     * test setter and getter for datetime
+     */
+    @Test
+    void testSet()
+    {
+        String text;
+        Question question = new Question();
+        question.setDateTime("11-30-2021T13:37:30.1234");
+        text = question.getDateTime();
+        assertEquals("11-30-2021T13:37:30.1234", text);
+    }
+
+    /**
+     * testing get null for datetime
+     */
+    @Test
+    void testgetNullDatetime()
+    {
+        String text;
+        Question question = new Question();
+        text = question.getDateTime();
+        assertEquals(null, text);
+    }
+
+    /**
+     * testing setter and getter for filename
+     */
+    @Test
+    void testSetFilename()
+    {
+        String text;
+        Question question = new Question();
+        question.setFileName("Tdnelson.txt");
+        text = question.getFileName();
+        assertEquals("Tdnelson.txt", text);
+    }
+
+    /**
+     * testing get null for filename
+     */
+    @Test
+    void testGetNullFilename()
+    {
+        String text;
+        Question question = new Question();
+        text = question.getDateTime();
+        assertEquals(null, text);
+    }
+
+    /**
+     * testing setter for datetime by using it twice
+     */
+    @Test
+    void testSetterForDatetimeTwice()
+    {
+        String text;
+        Question question = new Question();
+        question.setDateTime("11-30-2021T13:37:30.1234");
+        text = question.getDateTime();
+        assertEquals("11-30-2021T13:37:30.1234", text);
+        question.setDateTime("11-30-2021T15:37:30.1234");
+        text = question.getDateTime();
+        assertEquals("11-30-2021T15:37:30.1234", text);
+    }
+
+    /**
+     * testing setter for filename by using it twice
+     */
+    @Test
+    void testSetterForFilenameTwice()
+    {
+        String text;
+        Question question = new Question();
+        question.setFileName("hello.sh");
+        text = question.getFileName();
+        assertEquals("hello.sh", text);
+        question.setFileName("tdnelson.txt");
+        text = question.getFileName();
+        assertEquals("tdnelson.txt", text);
+    }
 }
