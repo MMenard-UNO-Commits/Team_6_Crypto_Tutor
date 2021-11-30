@@ -1,5 +1,5 @@
 package com.crypto_tutor.models;
-
+//comment to get this stuff back
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
