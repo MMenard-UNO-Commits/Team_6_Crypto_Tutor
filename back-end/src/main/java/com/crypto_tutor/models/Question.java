@@ -125,6 +125,18 @@ public class Question {
         this.fileName = fileName;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+            " username='" + getUsername() + "'" +
+            ", studentId='" + getStudentId() + "'" +
+            ", codeFragment='" + getCodeFragment() + "'" +
+            ", question='" + getQuestion() + "'" +
+            ", dateTime='" + getDateTime() + "'" +
+            ", fileName='" + getFileName() + "'" +
+            "}";
+    }
+
     
 
 }
