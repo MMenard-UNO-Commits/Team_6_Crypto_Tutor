@@ -22,29 +22,17 @@ export default function QuestionPage() {
     );
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     console.log("form submitted");
     const ques = { name, id, question, codeFragment };
-    fetch("http://104.131.172.9:8080/Jsoup-test/question/add", {
+    const response = await fetch("http://104.131.172.9:8080/back-end/question/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(ques),
-    }).then(() => {
-      console.log("New Question added");
-      history.push("/results");
     });
-  }
-  useEffect(() => {
-    const pastURL = "http://104.131.172.9:8080/Jsoup-test/question/testJsoup ";
-    //const currentURL = "http://localhost:8080/student/getAll2";
-    const fetchPastData = async () => {
-      try {
-        //We put the await keyword just in front of it to tell the function to wait for
-        //the fetch task to be done before running the next line of code.
-        const response = await fetch(pastURL);
-        var text = await response.text();
-        var script =
+    var text = await response.text();
+    var script =
           '<script language="JavaScript">' +
           "function ShowHide(divId) {" +
           "if(document.getElementById(divId).style.display == 'none') {" +
@@ -54,17 +42,41 @@ export default function QuestionPage() {
           "}" +
           "}" +
           "</script>";
-        var finalText = text.concat(script);
-        //setStudents(json);
-        setPast(finalText);
-        console.log(finalText);
-      } catch (error) {
-        console.log("error", error);
-      }
-    };
+    var finalText = text.concat(script);
+    console.log(finalText);
+    //history.push("/results");
+    
+  }
+  // useEffect(() => {
+  //   const pastURL = "http://104.131.172.9:8080/Jsoup-test/question/testJsoup ";
+  //   //const currentURL = "http://localhost:8080/student/getAll2";
+  //   const fetchPastData = async () => {
+  //     try {
+  //       //We put the await keyword just in front of it to tell the function to wait for
+  //       //the fetch task to be done before running the next line of code.
+  //       const response = await fetch(pastURL);
+  //       var text = await response.text();
+  //       var script =
+  //         '<script language="JavaScript">' +
+  //         "function ShowHide(divId) {" +
+  //         "if(document.getElementById(divId).style.display == 'none') {" +
+  //         "document.getElementById(divId).style.display='block';" +
+  //         "} else {" +
+  //         "document.getElementById(divId).style.display = 'none';" +
+  //         "}" +
+  //         "}" +
+  //         "</script>";
+  //       var finalText = text.concat(script);
+  //       //setStudents(json);
+  //       setPast(finalText);
+  //       console.log(finalText);
+  //     } catch (error) {
+  //       console.log("error", error);
+  //     }
+  //   };
 
-    fetchPastData();
-  }, []);
+  //   fetchPastData();
+  // }, []);
 
   return (
     <div className="p-3 mb-2 bg-light bg-opacity-20 text-dark">
