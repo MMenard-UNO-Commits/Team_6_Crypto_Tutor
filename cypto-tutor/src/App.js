@@ -13,7 +13,10 @@ import Login from "./components/Login";
 import Question from "./components/QuestionPage";
 import useToken from './components/useToken';
 import NotFound from './components/NotFound';
+import Results from './components/Results';
 import Parser from 'html-react-parser';
+import { CheckboxesProvider } from "./ContextAPI";
+import Hook from "./components/Hook";
 //import Questionform from "./components/questionform";
 
 function App() {
@@ -28,41 +31,49 @@ function App() {
   //Need better solution for logout button but it works for now
   return (
     <div className="wrapper">
-      <BrowserRouter>
-      <Navbar>
-        <LinkContainer to="/dashboard">
-          <Navbar.Brand>
-            CryptoTutor
-          </Navbar.Brand>
-        </LinkContainer>
-        <Navbar.Toggle />
-        <Navbar.Collapse>
-          <Nav activeKey={window.location.pathname}>
-            <LinkContainer to="/questionpage">
-              <Nav.Link>Ask Question</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/">
-              <Nav.Link onClick={() => {localStorage.clear(); window.location.reload(false);}}>Log Out</Nav.Link>
-            </LinkContainer>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-        <Switch>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
-          <Route path="/preferences">
-            <Preferences />
-          </Route>
-          <Route path="/questionpage">
-            <Question />
-          </Route>
-          <Route>
-            <NotFound />
-          </Route>
-        </Switch>
-      </BrowserRouter>
-      <FooterComponent />
+      <CheckboxesProvider>
+        <BrowserRouter>
+        <Navbar>
+          <LinkContainer to="/dashboard">
+            <Navbar.Brand>
+              CryptoTutor
+            </Navbar.Brand>
+          </LinkContainer>
+          <Navbar.Toggle />
+          <Navbar.Collapse>
+            <Nav activeKey={window.location.pathname}>
+              <LinkContainer to="/questionpage">
+                <Nav.Link>Ask Question</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/">
+                <Nav.Link onClick={() => {localStorage.clear(); window.location.reload(false);}}>Log Out</Nav.Link>
+              </LinkContainer>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+          <Switch>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+            <Route path="/preferences">
+              <Preferences />
+            </Route>
+            <Route path="/questionpage">
+              <Question />
+            </Route>
+            <Route path="/hook">
+              <Hook />
+            </Route>
+            <Route path="/results">
+              <Results />
+            </Route>
+            <Route>
+              <NotFound />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+        <FooterComponent />
+      </CheckboxesProvider>
     </div>
   );
 }
