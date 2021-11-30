@@ -6,7 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+
 import java.time.LocalTime;
 
 import com.crypto_tutor.models.Question;
@@ -17,8 +20,7 @@ import org.jsoup.select.Elements;
 
 public class QuestionHelper {
 
-    public static final String DIR_LOC = "/var/lib/tomcat9/webapps/back-end-0.0.1-SNAPSHOT/" 
-        + "comparisonFiles_functions-blind-clones/comparisonFiles_functions-blind-clones-0.30-classes-withsource.html";
+    public static final String DIR_LOC = "comparisonFiles_functions-blind-clones/comparisonFiles_functions-blind-clones-0.30-classes-withsource.html";
 
     /**
      * this will save the question's code fragment as a file
@@ -70,11 +72,12 @@ public class QuestionHelper {
      * @param String the fileName to be looked for in the HTML
      * @return the file name of the newly created file
      */
-    public static String parseHTML(String fileName) {
+    public static String parseHTML(String fileName, HttpServletRequest request) {
         String result = "";
+        String context = request.getServletContext().getRealPath("");
 
         try {
-            File htmlFile = new File(DIR_LOC);
+            File htmlFile = new File(context + File.separator + DIR_LOC);
             Document doc = Jsoup.parse(htmlFile, "UTF-8");
             Elements inputClones = doc.select("a:contains(" + fileName + ")");
             int len = inputClones.size();

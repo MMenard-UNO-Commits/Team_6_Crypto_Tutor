@@ -53,7 +53,7 @@ public class QuestionController {
 
         String compareFileName = QuestionHelper.saveToFile(question, newFileName, properPath);
         QuestionHelper.doComparison();
-        String htmlResult = QuestionHelper.parseHTML(compareFileName);
+        String htmlResult = QuestionHelper.parseHTML(compareFileName, request);
         System.out.println(htmlResult);
         return htmlResult;
     }
