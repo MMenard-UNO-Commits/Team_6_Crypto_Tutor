@@ -19,7 +19,8 @@ public class Question {
     private int studentId;
     private String codeFragment;
     private String question;
-
+    private String dateTime;
+    private String fileName;
     /**
      * Construction for the Question class
      */
@@ -90,6 +91,38 @@ public class Question {
      */
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    /**
+     * gets the dateTime 
+     * @return the dateTime as a string
+     */
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    /**
+     * sets the dateTime to whatever is input
+     * @param dateTime the dateTime we want to put in
+     */
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    /**
+     * gets the fileName 
+     * @return the fileName as a string
+     */
+    public String getFileName() {
+        return fileName;
+    }
+
+    /**
+     * sets the fileName to whatever is input
+     * @param fileName the fileName we want to put in
+     */
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     
