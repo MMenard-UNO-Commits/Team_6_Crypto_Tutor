@@ -5,8 +5,8 @@ import { useHistory } from 'react-router-dom';
 //comment
 
 export default function QuestionPage() {
-  const [name, setName] = useState("");
-  const [id, setID] = useState("");
+  const [username, setusername] = useState("");
+  const [student_id, setStudent_id] = useState("");
   const [question, setQuestion] = useState("");
   const [codeFragment, setCodeFragment] = useState("");
   const [questions, setQuestions] = useState([]);
@@ -15,8 +15,8 @@ export default function QuestionPage() {
 
   function validateForm() {
     return (
-      name.length > 0 &&
-      id.length > 0 &&
+      username.length > 0 &&
+      student_id.length > 0 &&
       question.length > 0 &&
       codeFragment.length > 0
     );
@@ -25,7 +25,7 @@ export default function QuestionPage() {
   async function handleSubmit(event) {
     event.preventDefault();
     console.log("form submitted");
-    const ques = { name, id, question, codeFragment };
+    const ques = { username, student_id, question, codeFragment };
     const response = await fetch("http://104.131.172.9:8080/back-end/question/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -44,6 +44,7 @@ export default function QuestionPage() {
           "</script>";
     var finalText = text.concat(script);
     console.log(finalText);
+    setPast(finalText);
     //history.push("/results");
     
   }
@@ -86,18 +87,18 @@ export default function QuestionPage() {
           <Form.Control
             autoFocus
             className=".form-control-sm"
-            type="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            type="username"
+            value={username}
+            onChange={(e) => setusername(e.target.value)}
           />
         </Form.Group>
         <Form.Group size="lg" controlId="ID">
           <Form.Label>Student ID</Form.Label>
           <Form.Control
             autoFocus
-            type="id"
-            value={id}
-            onChange={(e) => setID(e.target.value)}
+            type="student_id"
+            value={student_id}
+            onChange={(e) => setStudent_id(e.target.value)}
           />
         </Form.Group>
         <Form.Group size="lg" controlId="password">
@@ -129,6 +130,7 @@ export default function QuestionPage() {
           Submit
         </Button>
       </Form>
+      <div dangerouslySetInnerHTML={{ __html: past}} />
     </div>
   );
 }

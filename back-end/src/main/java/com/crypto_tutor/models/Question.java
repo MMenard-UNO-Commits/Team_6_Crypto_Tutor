@@ -1,4 +1,6 @@
 package com.crypto_tutor.models;
+
+import javax.persistence.Column;
 //comment to get this stuff back
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,20 +19,24 @@ public class Question {
 
     private String username;
     private int studentId;
+
+    @Column(columnDefinition = "VARCHAR(2048)")
     private String codeFragment;
+
     private String question;
     private String dateTime;
     private String fileName;
+
     /**
      * Construction for the Question class
      */
-    public Question()
-    {
+    public Question() {
 
     }
 
     /**
      * gets the username of teh account with the question
+     * 
      * @return the username of the account that made the question as a string
      */
     public String getUsername() {
@@ -39,6 +45,7 @@ public class Question {
 
     /**
      * gets the student id of the account that made the question
+     * 
      * @return id of the student as an int
      */
     public int getStudentId() {
@@ -47,6 +54,7 @@ public class Question {
 
     /**
      * sets the id of the student
+     * 
      * @param studentId the id we set it to
      */
     public void setStudentId(int studentId) {
@@ -54,7 +62,8 @@ public class Question {
     }
 
     /**
-     * gets the code fragment code we want to compare 
+     * gets the code fragment code we want to compare
+     * 
      * @return the code fragment as a string
      */
     public String getCodeFragment() {
@@ -63,6 +72,7 @@ public class Question {
 
     /**
      * sets the fragment of code that is input
+     * 
      * @param codeFragment the fragment of code we want to compare as as string
      */
     public void setCodeFragment(String codeFragment) {
@@ -70,7 +80,8 @@ public class Question {
     }
 
     /**
-     * gets the question 
+     * gets the question
+     * 
      * @return the question as a string
      */
     public String getQuestion() {
@@ -79,6 +90,7 @@ public class Question {
 
     /**
      * sets the question to whatever is input
+     * 
      * @param question the question we want to put in
      */
     public void setQuestion(String question) {
@@ -87,6 +99,7 @@ public class Question {
 
     /**
      * sets the username for the quetsion
+     * 
      * @param username the username associated with the question
      */
     public void setUsername(String username) {
@@ -94,7 +107,8 @@ public class Question {
     }
 
     /**
-     * gets the dateTime 
+     * gets the dateTime
+     * 
      * @return the dateTime as a string
      */
     public String getDateTime() {
@@ -103,6 +117,7 @@ public class Question {
 
     /**
      * sets the dateTime to whatever is input
+     * 
      * @param dateTime the dateTime we want to put in
      */
     public void setDateTime(String dateTime) {
@@ -110,7 +125,8 @@ public class Question {
     }
 
     /**
-     * gets the fileName 
+     * gets the fileName
+     * 
      * @return the fileName as a string
      */
     public String getFileName() {
@@ -119,6 +135,7 @@ public class Question {
 
     /**
      * sets the fileName to whatever is input
+     * 
      * @param fileName the fileName we want to put in
      */
     public void setFileName(String fileName) {
@@ -128,15 +145,13 @@ public class Question {
     @Override
     public String toString() {
         return "{" +
-            " username='" + getUsername() + "'" +
-            ", studentId='" + getStudentId() + "'" +
-            ", codeFragment='" + getCodeFragment() + "'" +
-            ", question='" + getQuestion() + "'" +
-            ", dateTime='" + getDateTime() + "'" +
-            ", fileName='" + getFileName() + "'" +
-            "}";
+                " username='" + getUsername() + "'" +
+                ", studentId='" + getStudentId() + "'" +
+                ", codeFragment='" + getCodeFragment() + "'" +
+                ", question='" + getQuestion() + "'" +
+                ", dateTime='" + getDateTime() + "'" +
+                ", fileName='" + getFileName() + "'" +
+                "}";
     }
-
-    
 
 }

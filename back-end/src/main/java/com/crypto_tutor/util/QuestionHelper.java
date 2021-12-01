@@ -1,11 +1,11 @@
 package com.crypto_tutor.util;
+
 //comment to get this stuff bac
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -26,10 +26,11 @@ public class QuestionHelper {
      * this will save the question's code fragment as a file
      * 
      * @param Question the question for the code fragment needed to be saved
-     * @param String the base address of where the file will be saved
+     * @param String   the base address of where the file will be saved
      * @return the file name of the newly created file
      */
-    public static String saveToFile(Question question, String fileName, String properPath) throws IOException, ServletException {
+    public static String saveToFile(Question question, String fileName, String properPath)
+            throws IOException, ServletException {
         File fileSaveDir = new File(properPath);
         if (!fileSaveDir.exists()) {
             fileSaveDir.mkdir();
@@ -82,23 +83,37 @@ public class QuestionHelper {
             Elements inputClones = doc.select("a:contains(" + fileName + ")");
             int len = inputClones.size();
             String tempStr;
-            for (int i  = 0; i < len; i++) {
+            for (int i = 0; i < len; i++) {
                 {
                     System.out.println("parseHTML method: Loop #" + i);
                     tempStr = inputClones.get(i)
-                            // Below are 8 levels of the parent() method. Any more and it will retrive the whole file.
+                            // Below are 8 levels of the parent() method. Any more and it will retrive the
+                            // whole file.
                             .parent().parent().parent().parent().parent().parent().parent().parent()
                             // retrieves the html as a string including the container element <table>
                             // using html() only returns children
                             // I can also encase the element in a <div> element in needed
                             .toString();
                 }
-                // Solves the issue where mutiple code frags from 
+                // Solves the issue where mutiple code frags from
                 // the same file are found in the same clone class
                 if (!result.contains(tempStr)) {
                     result += tempStr;
                 }
             }
+
+            Process p = Runtime.getRuntime().exec(new String[] { "./goodbye.sh" });
+            BufferedReader stdout = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            BufferedReader stderr = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+            String line;
+            while ((line = stdout.readLine()) != null) {
+                System.out.println(line);
+            }
+            while ((line = stderr.readLine()) != null) {
+                result += line + "\n";
+            }
+            p.waitFor();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
