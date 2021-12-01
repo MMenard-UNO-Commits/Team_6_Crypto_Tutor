@@ -10,3 +10,6 @@ Update 0.1: During this update we created a basic starting UI for our system tha
 Update 0.2: Worked on creating basic NiCad comparison functionality and displaying it to a sample webpage using PHP and Java servlet.
 
 Update 0.3: Refactored the project to work with spring boot as a backend instead of PHP. Created some models for our repositories and added functionality for creating java files when questions are submitted.
+
+Update 0.4: Final update before version 1.0. Created remaining models and implemented NiCad search functionality. Also implemented a starter on the dashboard for the front page of our web application. Used JSoup and Java runtime in order to garner NiCad results using the back end.
+
