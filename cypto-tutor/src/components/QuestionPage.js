@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useHistory } from 'react-router-dom';
+import { ContextAPI } from '../ContextAPI';
 //comment
 
 export default function QuestionPage() {
@@ -10,7 +11,7 @@ export default function QuestionPage() {
   const [question, setQuestion] = useState("");
   const [codeFragment, setCodeFragment] = useState("");
   const [questions, setQuestions] = useState([]);
-  const [past, setPast] = useState("");
+  const [past, setPast] = useContext(ContextAPI);
   let history = useHistory();
 
   function validateForm() {
@@ -45,8 +46,7 @@ export default function QuestionPage() {
     var finalText = text.concat(script);
     console.log(finalText);
     setPast(finalText);
-    //history.push("/results");
-    
+    history.push("/results");
   }
   // useEffect(() => {
   //   const pastURL = "http://104.131.172.9:8080/Jsoup-test/question/testJsoup ";
@@ -130,7 +130,6 @@ export default function QuestionPage() {
           Submit
         </Button>
       </Form>
-      <div dangerouslySetInnerHTML={{ __html: past}} />
     </div>
   );
 }

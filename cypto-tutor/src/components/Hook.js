@@ -9,26 +9,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ContextAPI } from "../ContextAPI";
 
 function Hook() {
-  const [test, setTest] = useContext(ContextAPI);
+  const [past, setPast] = useContext(ContextAPI);
   const value = useContext(ContextAPI);
 
   const [html, setHtml] = useState("");
   const [parsedArray, setParsedArray] = useState([]);
   const [current, setCurrent] = useState("");
-  const [past, setPast] = useState("");
 
   useEffect(() => {
-    const pastURL = "http://104.131.172.9:8080/Jsoup-test/question/testJsoup";
 
     const fetchPastData = async () => {
       try {
         //We put the await keyword just in front of it to tell the function to wait for
         //the fetch task to be done before running the next line of code.
-        const response = await fetch(pastURL);
-        const text = await response.text();
-        setHtml(text);
-        console.log(text);
-        const parsed = $(text).find("div");
+        setHtml(past);
+        console.log(past);
+        const parsed = $(past).find("div");
         console.log(html);
 
         for (let i = 0; i < parsed.length; i++) {

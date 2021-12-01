@@ -72,7 +72,6 @@ function App() {
             </Route>
           </Switch>
         </BrowserRouter>
-        <FooterComponent />
       </CheckboxesProvider>
     </div>
   );

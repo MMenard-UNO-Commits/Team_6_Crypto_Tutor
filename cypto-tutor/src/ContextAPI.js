@@ -4,9 +4,10 @@ export const ContextAPI = createContext();
 
 export const CheckboxesProvider = (props) => {
   const [test, setTest] = useState([]);
+  const [past, setPast] = useState("");
 
   return (
-    <ContextAPI.Provider value={[test, setTest]}>
+    <ContextAPI.Provider value={[past, setPast]}>
       {props.children}
     </ContextAPI.Provider>
   );
