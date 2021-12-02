@@ -16,6 +16,7 @@ import com.crypto_tutor.models.Question;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class QuestionHelper {
