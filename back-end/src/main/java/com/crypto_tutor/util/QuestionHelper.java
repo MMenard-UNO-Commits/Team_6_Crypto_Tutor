@@ -73,46 +73,44 @@ public class QuestionHelper {
      * @param String the fileName to be looked for in the HTML
      * @return the file name of the newly created file
      */
-    public static String parseHTML(String fileName, HttpServletRequest request) {
+    public static String parseHTML(String fileName) {
         String result = "";
-        String context = request.getServletContext().getRealPath("");
 
         try {
-            File htmlFile = new File(context + File.separator + DIR_LOC);
+            File htmlFile = new File(DIR_LOC);
             Document doc = Jsoup.parse(htmlFile, "UTF-8");
             Elements inputClones = doc.select("a:contains(" + fileName + ")");
             int len = inputClones.size();
             String tempStr;
-            for (int i = 0; i < len; i++) {
+            for (int i  = 0; i < len; i++) {
                 {
-                    System.out.println("parseHTML method: Loop #" + i);
                     tempStr = inputClones.get(i)
-                            // Below are 8 levels of the parent() method. Any more and it will retrive the
-                            // whole file.
+                            // Below are 8 levels of the parent() method. Any more and it will retrive the whole file.
                             .parent().parent().parent().parent().parent().parent().parent().parent()
                             // retrieves the html as a string including the container element <table>
                             // using html() only returns children
                             // I can also encase the element in a <div> element in needed
                             .toString();
                 }
-                // Solves the issue where mutiple code frags from
+                // Solves the issue where mutiple code frags from 
                 // the same file are found in the same clone class
                 if (!result.contains(tempStr)) {
                     result += tempStr;
                 }
             }
-
-            Process p = Runtime.getRuntime().exec(new String[] { "./goodbye.sh" });
-            BufferedReader stdout = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            BufferedReader stderr = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-            String line;
-            while ((line = stdout.readLine()) != null) {
-                System.out.println(line);
+            // adds checkboxes onto the end of divs containing the code fragments
+            Document editedDoc = Jsoup.parse(result);
+            Elements midDivs = editedDoc.select("div[class=\"mid\"]");
+            len = midDivs.size();
+            Element tempElem;
+            String tempCodeFrag;
+            for (int i  = 0; i < len; i++) {
+                tempElem = midDivs.get(i);
+                tempCodeFrag = tempElem.html();
+                tempStr = "<Checkbox value=\"" + tempCodeFrag + "\" onChange={handleChange} inputProps={{ \"aria-label\": \"controlled\"}} />";
+                tempElem.after(tempStr);
             }
-            while ((line = stderr.readLine()) != null) {
-                result += line + "\n";
-            }
-            p.waitFor();
+            result = editedDoc.toString();
 
         } catch (Exception e) {
             e.printStackTrace();
