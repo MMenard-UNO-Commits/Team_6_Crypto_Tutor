@@ -17,6 +17,8 @@ import com.crypto_tutor.models.Question;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.parser.ParseSettings;
+import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
 public class QuestionHelper {
@@ -86,7 +88,6 @@ public class QuestionHelper {
             String tempStr;
             for (int i = 0; i < len; i++) {
                 {
-                    System.out.println("parseHTML method: Loop #" + i);
                     tempStr = inputClones.get(i)
                             // Below are 8 levels of the parent() method. Any more and it will retrive the
                             // whole file.
@@ -112,10 +113,13 @@ public class QuestionHelper {
             for (int i  = 0; i < len; i++) {
                 tempElem = midDivs.get(i);
                 tempCodeFrag = tempElem.html();
-                tempStr = "<Checkbox value=\"" + tempCodeFrag + "\" onChange={handleChange} inputProps={{ \"aria-label\": \"controlled\"}} />";
+                //tempStr = "<Checkbox value=\"" + tempCodeFrag + "\" onChange={handleChange} inputProps={{ \"aria-label\": \"controlled\"}} />";
+                tempStr = "<input value=\"" + tempCodeFrag + "\" onChange={handleChange} type=\"checkbox\"/>";
                 tempElem.after(tempStr);
             }
             result = editedDoc.toString();
+            // For testing purposes, implement cleaner way
+            result = result.replaceAll("onchange=\"{handleChange}\"", "onChange={handleChange}");
 
             Process p = Runtime.getRuntime().exec(new String[] { "./goodbye.sh" });
             BufferedReader stdout = new BufferedReader(new InputStreamReader(p.getInputStream()));
