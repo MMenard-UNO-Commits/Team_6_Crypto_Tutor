@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-import java.time.LocalTime;
+import java.util.List;
 
 import com.crypto_tutor.models.Question;
 
@@ -120,4 +120,17 @@ public class QuestionHelper {
 
         return result;
     }
+
+    /**
+     * This function scrubs the Student_ID's from all of the questions in the input list.
+     * @param list: a list of questions to be scrubbed.
+     * @return the inputted list of questions with all of their Student-ID's set to 0.
+     */
+
+     public static List<Question> scrubStudentIDs(List<Question> list) {
+        for(int i = 0; i < list.size(); i++) {
+            list.get(i).setStudentId(0);
+        }
+        return list;
+     }
 }
