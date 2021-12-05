@@ -1,8 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
 import { ContextAPI } from "../ContextAPI";
+import $, { map, jQuery } from "jquery";
 //comment
 
 export default function QuestionPage() {
@@ -10,7 +11,8 @@ export default function QuestionPage() {
   const [student_id, setStudent_id] = useState("");
   const [question, setQuestion] = useState("");
   const [codeFragment, setCodeFragment] = useState("");
-  const { setPast } = useContext(ContextAPI);
+  const [questions, setQuestions] = useState([]);
+  const { past, setPast } = useContext(ContextAPI);
 
   const { parsedArray, setParsedArray } = useContext(ContextAPI);
 
@@ -64,6 +66,31 @@ export default function QuestionPage() {
     console.log(array.length)
     setParsedArray(array);
     console.log(parsedArray);
+
+    // console.log(doc);
+
+    // setPast(finalText);
+    // let array = [];
+
+    // let parsed = $(finalText).find("div").toArray;
+    // console.log(parsed[0]);
+
+    // for (let i = 0; i < parsed.length; i++) {
+    //   array[i] = parsed[i].innerText;
+    //   console.log(array[i]);
+    // }
+    // setParsedArray(array[0]);
+
+    // console.log(array.length);
+    // console.log(array[0]);
+    //setParsedArray(parsedArray.concat("My name is Milan"));
+    //setParsedArray((parsedArray) => [...parsedArray, parsed[0]]);
+
+    //console.log(parsedArray.array[0]);
+    //console.log(parsedArray);
+    //console.log(array.length);
+    //console.log(parsed.length);
+
     history.push("/results");
   }
 

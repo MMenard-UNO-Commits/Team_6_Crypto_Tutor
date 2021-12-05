@@ -1,20 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ContextAPI } from "../ContextAPI";
 import { useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 export default function Results() {
-  const { past } = useContext(ContextAPI);
+  const { past, setPast } = useContext(ContextAPI);
 
-  const { setCode1 } = useContext(ContextAPI);
-  const { setCode2 } = useContext(ContextAPI);
+  const { code1, setCode1 } = useContext(ContextAPI);
+  const { code2, setCode2 } = useContext(ContextAPI);
   let history = useHistory();
   const { selectedCodeFragment1, setSelectedCodeFragment1 } =
     useContext(ContextAPI);
   const { selectedCodeFragment2, setSelectedCodeFragment2 } =
     useContext(ContextAPI);
-  const { parsedArray } = useContext(ContextAPI);
+  const { parsedArray, setParsedArray } = useContext(ContextAPI);
 
  
 

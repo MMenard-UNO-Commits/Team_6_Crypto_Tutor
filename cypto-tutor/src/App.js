@@ -1,9 +1,12 @@
 import "./App.css";
-import React from "react";
+import React, { Component, useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { LinkContainer } from "react-router-bootstrap";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import FooterComponent from "./components/FooterComponent";
+import HeaderComponent from "./components/HeaderComponent";
+import { AppContext, useAppContext } from "./lib/contextLib";
 import Dashboard from "./components/Dashboard";
 import Preferences from "./components/Preferences";
 import Login from "./components/Login";
@@ -11,8 +14,10 @@ import Question from "./components/QuestionPage";
 import useToken from "./components/useToken";
 import NotFound from "./components/NotFound";
 import Results from "./components/Results";
+import Parser from "html-react-parser";
 import { CheckboxesProvider } from "./ContextAPI";
 import Hook from "./components/Hook";
+import Diff2html from "./components/Diff2html";
 //import Questionform from "./components/questionform";
 
 function App() {
@@ -67,6 +72,9 @@ function App() {
             </Route>
             <Route path="/results">
               <Results />
+            </Route>
+            <Route path="/diff2html">
+              <Diff2html />
             </Route>
             <Route>
               <NotFound />
