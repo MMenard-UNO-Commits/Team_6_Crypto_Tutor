@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Option from './Option';
 import Form from "react-bootstrap/Form";
 import Select from "react-select";
+import DisplayQuestions from "./DisplayQuestions";
 
 export default function Dashboard() {
 
@@ -9,6 +10,7 @@ export default function Dashboard() {
   const [username, setUsername] = useState("");
   const [query, setQuery] = useState("");
   const [questions, setQuestions] = useState([]);
+  const [questionMap, setQuestionMap] = useState();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -21,9 +23,11 @@ export default function Dashboard() {
     });
     const pulledQuestions = await response.json();
     setQuestions(pulledQuestions);
+    setQuestionMap(questions.map(question => <DisplayQuestions question={question} />));
     console.log(username);
     console.log(query);
     console.log(questions);
+    console.log(DisplayQuestions);
 
 
   }
@@ -58,12 +62,13 @@ export default function Dashboard() {
         <Form.Label>Select Username:</Form.Label>
         <Select options={users} 
                 onChange={(e) => {setUsername(e.value)}}
-                type="user"
-                value={username}
                 />
       </Form.Group>
         <input type="submit" value="submit"></input>
       </Form>
+      <div>
+        {questionMap}
+      </div>
       </div>
     );
 }
