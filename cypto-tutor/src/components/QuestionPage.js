@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
 import { ContextAPI } from "../ContextAPI";
 import $, { map, jQuery } from "jquery";
+import "./QuestionPage.css"
 //comment
 
 export default function QuestionPage() {
@@ -119,6 +120,7 @@ export default function QuestionPage() {
         <Form.Group size="lg" controlId="password">
           <Form.Label>Question</Form.Label>
           <textarea
+            id="question"
             className="form-control"
             type="question"
             placeholder="Type a Question"
@@ -129,6 +131,7 @@ export default function QuestionPage() {
         <Form.Group size="lg" controlId="ID">
           <Form.Label>Code Fragment</Form.Label>
           <textarea
+            id="codefragment"
             className="form-control"
             type="description"
             placeholder="Enter code fragment"
