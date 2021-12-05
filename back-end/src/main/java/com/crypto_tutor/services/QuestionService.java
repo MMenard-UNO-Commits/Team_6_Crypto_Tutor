@@ -22,4 +22,5 @@ public interface QuestionService {
      * @return the questions as a list
      */
     public List<Question> getAllQuestions();
+
 }
