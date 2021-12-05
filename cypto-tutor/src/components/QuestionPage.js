@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useHistory } from 'react-router-dom';
-import { ContextAPI } from '../ContextAPI';
+import { useHistory } from "react-router-dom";
+import { ContextAPI } from "../ContextAPI";
+import $, { map, jQuery } from "jquery";
 //comment
 
 export default function QuestionPage() {
@@ -11,7 +12,10 @@ export default function QuestionPage() {
   const [question, setQuestion] = useState("");
   const [codeFragment, setCodeFragment] = useState("");
   const [questions, setQuestions] = useState([]);
-  const [past, setPast] = useContext(ContextAPI);
+  const { past, setPast } = useContext(ContextAPI);
+
+  const { parsedArray, setParsedArray } = useContext(ContextAPI);
+
   let history = useHistory();
 
   function validateForm() {
@@ -27,57 +31,68 @@ export default function QuestionPage() {
     event.preventDefault();
     console.log("form submitted");
     const ques = { username, student_id, question, codeFragment };
-    const response = await fetch("http://104.131.172.9:8080/back-end/question/add", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(ques),
-    });
+    const response = await fetch(
+      "http://104.131.172.9:8080/back-end/question/add",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(ques),
+      }
+    );
     var text = await response.text();
     var script =
-          '<script language="JavaScript">' +
-          "function ShowHide(divId) {" +
-          "if(document.getElementById(divId).style.display == 'none') {" +
-          "document.getElementById(divId).style.display='block';" +
-          "} else {" +
-          "document.getElementById(divId).style.display = 'none';" +
-          "}" +
-          "}" +
-          "</script>";
+      '<script language="JavaScript">' +
+      "function ShowHide(divId) {" +
+      "if(document.getElementById(divId).style.display == 'none') {" +
+      "document.getElementById(divId).style.display='block';" +
+      "} else {" +
+      "document.getElementById(divId).style.display = 'none';" +
+      "}" +
+      "}" +
+      "</script>";
     var finalText = text.concat(script);
-    console.log(finalText);
     setPast(finalText);
+
+    const parser = new DOMParser();
+
+    const doc = parser.parseFromString(finalText, "text/html");
+    const parsed2 = doc.getElementsByTagName("div");
+    console.log(parsed2.length);
+    let array = [];
+
+    for (let i = 0; i < parsed2.length; i++) {
+      array[i] = parsed2[i].innerText;
+    }
+    console.log(array.length)
+    setParsedArray(array);
+    console.log(parsedArray);
+
+    // console.log(doc);
+
+    // setPast(finalText);
+    // let array = [];
+
+    // let parsed = $(finalText).find("div").toArray;
+    // console.log(parsed[0]);
+
+    // for (let i = 0; i < parsed.length; i++) {
+    //   array[i] = parsed[i].innerText;
+    //   console.log(array[i]);
+    // }
+    // setParsedArray(array[0]);
+
+    // console.log(array.length);
+    // console.log(array[0]);
+    //setParsedArray(parsedArray.concat("My name is Milan"));
+    //setParsedArray((parsedArray) => [...parsedArray, parsed[0]]);
+
+    //console.log(parsedArray.array[0]);
+    //console.log(parsedArray);
+    //console.log(array.length);
+    //console.log(parsed.length);
+
     history.push("/results");
   }
-  // useEffect(() => {
-  //   const pastURL = "http://104.131.172.9:8080/Jsoup-test/question/testJsoup ";
-  //   //const currentURL = "http://localhost:8080/student/getAll2";
-  //   const fetchPastData = async () => {
-  //     try {
-  //       //We put the await keyword just in front of it to tell the function to wait for
-  //       //the fetch task to be done before running the next line of code.
-  //       const response = await fetch(pastURL);
-  //       var text = await response.text();
-  //       var script =
-  //         '<script language="JavaScript">' +
-  //         "function ShowHide(divId) {" +
-  //         "if(document.getElementById(divId).style.display == 'none') {" +
-  //         "document.getElementById(divId).style.display='block';" +
-  //         "} else {" +
-  //         "document.getElementById(divId).style.display = 'none';" +
-  //         "}" +
-  //         "}" +
-  //         "</script>";
-  //       var finalText = text.concat(script);
-  //       //setStudents(json);
-  //       setPast(finalText);
-  //       console.log(finalText);
-  //     } catch (error) {
-  //       console.log("error", error);
-  //     }
-  //   };
-
-  //   fetchPastData();
-  // }, []);
 
   return (
     <div className="p-3 mb-2 bg-light bg-opacity-20 text-dark">

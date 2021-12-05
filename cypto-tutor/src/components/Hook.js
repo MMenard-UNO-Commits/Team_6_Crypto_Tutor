@@ -9,41 +9,23 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ContextAPI } from "../ContextAPI";
 
 function Hook() {
-  const [past, setPast] = useContext(ContextAPI);
-  const value = useContext(ContextAPI);
+  const { parsedArray, setParsedArray } = useContext(ContextAPI);
+  const { code1, setCode1 } = useContext(ContextAPI);
+  const { code2, setCode2 } = useContext(ContextAPI);
 
-  const [html, setHtml] = useState("");
-  const [parsedArray, setParsedArray] = useState([]);
-  const [current, setCurrent] = useState("");
-
-  useEffect(() => {
-
-    const fetchPastData = async () => {
-      try {
-        //We put the await keyword just in front of it to tell the function to wait for
-        //the fetch task to be done before running the next line of code.
-        setHtml(past);
-        console.log(past);
-        const parsed = $(past).find("div");
-        console.log(html);
-
-        for (let i = 0; i < parsed.length; i++) {
-          parsedArray[i] = parsed[i].innerText;
-        }
-        setCurrent(parsedArray[0]);
-        setPast(parsedArray[1]);
-        console.log(parsedArray[1]);
-      } catch (error) {
-        console.log("error", error);
-      }
-    };
-
-    fetchPastData();
-  }, []);
+  const { selectedCodeFragment1, setSelectedCodeFragment1 } =
+    useContext(ContextAPI);
+  const { selectedCodeFragment2, setSelectedCodeFragment2 } =
+    useContext(ContextAPI);
 
   return (
     <div>
-      <ReactDiffViewer oldValue={past} newValue={current} splitView={true} useDarkTheme={true} />
+      <ReactDiffViewer
+        oldValue={code1}
+        newValue={code2}
+        splitView={true}
+        useDarkTheme={true}
+      />
     </div>
   );
 }
