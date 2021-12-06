@@ -46,5 +46,6 @@ textarea {
   height: 50px;
 }
 .wrapper{
+  display: inline-block;
   padding: 20px;
 }

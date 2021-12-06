@@ -1,19 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
 import { ContextAPI } from "../ContextAPI";
-import $, { map, jQuery } from "jquery";
 import "./QuestionPage.css"
-//comment
 
 export default function QuestionPage() {
   const [username, setusername] = useState("");
   const [student_id, setStudent_id] = useState("");
   const [question, setQuestion] = useState("");
   const [codeFragment, setCodeFragment] = useState("");
-  const [questions, setQuestions] = useState([]);
-  const { past, setPast } = useContext(ContextAPI);
+  const { setPast } = useContext(ContextAPI);
 
   const { parsedArray, setParsedArray } = useContext(ContextAPI);
 

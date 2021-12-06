@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import Option from './Option';
+import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Select from "react-select";
 import DisplayQuestions from "./DisplayQuestions";
@@ -17,7 +16,7 @@ export default function Dashboard() {
     const data = new FormData();
     data.append("query", query);
     data.append("user", username);
-    const response = await fetch("http://localhost:8080/question/getFilteredQuestions", {
+    const response = await fetch("http://104.131.172.9:8080/back-end/question/getFilteredQuestions", {
       method: "POST",
       body: data
     });
@@ -48,7 +47,7 @@ export default function Dashboard() {
     console.log(users);
     console.log(username);
     console.log(query);
-  }, [])
+  })
 
     return(
       <div key="html">

@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useContext }from "react";
+import React from "react";
 import "./DisplayQuestions.css"
 
 export default function DisplayQuestions(props) {
-    const [question, setQuestion] = useState([]);
 
     return (
         <div style={{border: "3px solid black",
