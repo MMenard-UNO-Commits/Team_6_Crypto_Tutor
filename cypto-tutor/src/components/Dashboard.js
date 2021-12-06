@@ -23,10 +23,6 @@ export default function Dashboard() {
     const pulledQuestions = await response.json();
     setQuestions(pulledQuestions);
     setQuestionMap(questions.map(question => <DisplayQuestions question={question} />));
-    console.log(username);
-    console.log(query);
-    console.log(questions);
-    console.log(DisplayQuestions);
 
 
   }
@@ -34,7 +30,6 @@ export default function Dashboard() {
   async function pullUsers(){
     const response = await fetch("http://104.131.172.9:8080/users-test/user/getStudents");
     const test = await response.json();
-    console.log(test);
     let tmpArray = [{value: "", label:"None"}];
     for (var i = 0; i < test.length; i++) {
       tmpArray.push({value: test[i], label: test[i]});
@@ -44,23 +39,31 @@ export default function Dashboard() {
   //fetch the array of users when the component is loaded.
   useEffect(() => {
     pullUsers();
-    console.log(users);
-    console.log(username);
-    console.log(query);
   })
+
+  function handleUserChange(value) {
+    setUsername(value);
+  }
 
     return(
       <div key="html">
       <h2 key="heading"> Dashboard </h2>
       <Form onSubmit = {handleSubmit}>
-        <label key="label1" htmlFor="query"> Query:</label>
-        <input key="input1" type="text" id="query" name="query" onChange={(e) => {setQuery(e.target.value)}}>
-
-        </input>
+        <Form.Group size="lg" controlID="query">
+        <Form.Label>Enter Query:</Form.Label>
+          <textarea
+              id="question"
+              className="form-control"
+              type="question"
+              placeholder="Type a Query"
+              value = {query}
+              onChange={(e) => {setQuery(e.target.value)}}
+            />
+          </Form.Group>
       <Form.Group size="lg" controlID="user">
         <Form.Label>Select Username:</Form.Label>
         <Select options={users} 
-                onChange={(e) => {setUsername(e.value)}}
+                onChange={(e) => {handleUserChange(e.value)}}
                 />
       </Form.Group>
         <input type="submit" value="submit"></input>

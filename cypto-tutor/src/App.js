@@ -36,6 +36,9 @@ function App() {
             <Navbar.Toggle />
             <Navbar.Collapse>
               <Nav activeKey={window.location.pathname}>
+                <LinkContainer to="/dashboard">
+                  <Nav.Link>Search Questions</Nav.Link>
+                </LinkContainer>
                 <LinkContainer to="/questionpage">
                   <Nav.Link>Ask Question</Nav.Link>
                 </LinkContainer>
