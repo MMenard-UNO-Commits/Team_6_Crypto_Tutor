@@ -122,7 +122,7 @@ public class QuestionHelper {
                     tempStr  = "<br>>";
                     tempElem.before(tempStr);
                 }
-                tempStr  = "Code Fragment #" + (i + 1);
+                tempStr  = "Code Fragment #" + (i + 1) + ": ";
                 tempElem.before(tempStr);
             }
             result = editedDoc.toString();
