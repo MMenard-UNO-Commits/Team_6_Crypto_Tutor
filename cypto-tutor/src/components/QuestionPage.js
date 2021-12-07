@@ -64,43 +64,20 @@ export default function QuestionPage() {
     console.log(array.length)
     setParsedArray(array);
     console.log(parsedArray);
-
-    // console.log(doc);
-
-    // setPast(finalText);
-    // let array = [];
-
-    // let parsed = $(finalText).find("div").toArray;
-    // console.log(parsed[0]);
-
-    // for (let i = 0; i < parsed.length; i++) {
-    //   array[i] = parsed[i].innerText;
-    //   console.log(array[i]);
-    // }
-    // setParsedArray(array[0]);
-
-    // console.log(array.length);
-    // console.log(array[0]);
-    //setParsedArray(parsedArray.concat("My name is Milan"));
-    //setParsedArray((parsedArray) => [...parsedArray, parsed[0]]);
-
-    //console.log(parsedArray.array[0]);
-    //console.log(parsedArray);
-    //console.log(array.length);
-    //console.log(parsed.length);
-
     history.push("/results");
   }
 
   return (
     <div className="p-3 mb-2 bg-light bg-opacity-20 text-dark">
+      <h4 key="heading" className="h4"> Ask Questions </h4>
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="ID">
-          <Form.Label>Name</Form.Label>
+          <Form.Label>Username</Form.Label>
           <Form.Control
             autoFocus
             className=".form-control-sm"
             type="username"
+            placeholder="Enter your username"
             value={username}
             onChange={(e) => setusername(e.target.value)}
           />
@@ -110,6 +87,7 @@ export default function QuestionPage() {
           <Form.Control
             autoFocus
             type="student_id"
+            placeholder="Enter your student ID"
             value={student_id}
             onChange={(e) => setStudent_id(e.target.value)}
           />
@@ -120,7 +98,7 @@ export default function QuestionPage() {
             id="question"
             className="form-control"
             type="question"
-            placeholder="Type a Question"
+            placeholder="Enter your question"
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
           />
@@ -131,7 +109,7 @@ export default function QuestionPage() {
             id="codefragment"
             className="form-control"
             type="description"
-            placeholder="Enter code fragment"
+            placeholder="Enter a code fragment"
             value={codeFragment}
             onChange={(e) => setCodeFragment(e.target.value)}
           />

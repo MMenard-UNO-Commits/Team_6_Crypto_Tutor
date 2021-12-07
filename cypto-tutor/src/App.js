@@ -11,6 +11,7 @@ import NotFound from "./components/NotFound";
 import Results from "./components/Results";
 import { CheckboxesProvider } from "./ContextAPI";
 import Hook from "./components/Hook";
+import {Helmet} from 'react-helmet';
 
 function App() {
 
@@ -26,23 +27,26 @@ function App() {
 
   //Need better solution for logout button but it works for now
   return (
-    <div className="App container py-3">
+    <div className="container">
+      <Helmet>
+        <style>{'body { background-color: rgb(213, 213, 213); }'}</style>
+      </Helmet>
       <CheckboxesProvider>
         <BrowserRouter>
-          <Navbar collapseOnSelect bg="light" expand="md" className="mb-3">
+          <Navbar collapseOnSelect>
             <LinkContainer to="/dashboard">
-              <Navbar.Brand>CryptoTutor</Navbar.Brand>
+              <Navbar.Brand className="test">📖CryptoTutor</Navbar.Brand>
             </LinkContainer>
             <Navbar.Toggle />
             <Navbar.Collapse>
-              <Nav activeKey={window.location.pathname}>
+              <Nav>
                 <LinkContainer to="/dashboard">
-                  <Nav.Link>Search Questions</Nav.Link>
+                  <Nav.Link>🔍Search Questions</Nav.Link>
                 </LinkContainer>
                 <LinkContainer to="/questionpage">
-                  <Nav.Link>Ask Question</Nav.Link>
+                  <Nav.Link>❓Ask Question</Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="/">
+                {/*<LinkContainer to="/">
                   <Nav.Link
                     onClick={() => {
                       localStorage.clear();
@@ -51,7 +55,7 @@ function App() {
                   >
                     Log Out
                   </Nav.Link>
-                </LinkContainer>
+                  </LinkContainer>*/}
               </Nav>
             </Navbar.Collapse>
           </Navbar>

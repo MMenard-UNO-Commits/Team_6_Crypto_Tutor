@@ -1,5 +1,7 @@
+import "./Dashboard.css";
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import Select from "react-select";
 import DisplayQuestions from "./DisplayQuestions";
 
@@ -46,8 +48,8 @@ export default function Dashboard() {
   }
 
     return(
-      <div key="html">
-      <h2 key="heading"> Dashboard </h2>
+      <div key="html" className="p-3 mb-2 bg-light bg-opacity-20 text-dark">
+      <h4 key="heading" className="h4"> Search Questions </h4>
       <Form onSubmit = {handleSubmit}>
         <Form.Group size="lg" controlID="query">
         <Form.Label>Enter Query:</Form.Label>
@@ -55,7 +57,7 @@ export default function Dashboard() {
               id="question"
               className="form-control"
               type="question"
-              placeholder="Type a Query"
+              placeholder="Type your query"
               value = {query}
               onChange={(e) => {setQuery(e.target.value)}}
             />
@@ -66,7 +68,12 @@ export default function Dashboard() {
                 onChange={(e) => {handleUserChange(e.value)}}
                 />
       </Form.Group>
-        <input type="submit" value="submit"></input>
+        <Button type="submit"
+        value="submit"
+        className="btn btn-info m-3"
+        size="lg">
+          Submit
+        </Button>
       </Form>
       <div>
         {questionMap}

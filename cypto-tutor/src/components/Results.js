@@ -3,6 +3,7 @@ import { ContextAPI } from "../ContextAPI";
 import { useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import "./Results.css";
 
 export default function Results() {
   const { past } = useContext(ContextAPI);
@@ -28,13 +29,14 @@ export default function Results() {
   }
 
   return (
-    <div>
+    <div className="p-3 mb-2 bg-light bg-opacity-20 text-dark" style={{resize: "both", overflow: "auto"}}>
+      <h2 className="h2">Results</h2>
       <div dangerouslySetInnerHTML={{ __html: past }} />
-      <h1>Please Enter the code Fragment Number you would like to compare:</h1>
+      <h2 className="h2">Choose two code fragments to compare:</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg">
           <Form.Label>Code Fragment Number</Form.Label>
-          <textarea
+          <Form.Control
             autoFocus
             type="text"
             className="form-control"
@@ -45,7 +47,7 @@ export default function Results() {
         <Form.Group size="lg">
           <Form.Label>Code Fragment Number </Form.Label>
 
-          <textarea
+          <Form.Control
             autoFocus
             type="text"
             className="form-control"
