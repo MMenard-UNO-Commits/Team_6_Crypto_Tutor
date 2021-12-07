@@ -119,10 +119,10 @@ public class QuestionHelper {
                 //tempStr = "<input value=\"" + tempCodeFrag + "\" onChange={handleChange} type=\"checkbox\"/>";
 
                 if (i != 0 && i % 2 == 0) {
-                    tempStr  = "<br>>";
+                    tempStr  = "<br>";
                     tempElem.before(tempStr);
                 }
-                tempStr  = "Code Fragment #" + (i + 1);
+                tempStr  = "Code Fragment #" + (i + 1) + ": ";
                 tempElem.before(tempStr);
             }
             result = editedDoc.toString();
