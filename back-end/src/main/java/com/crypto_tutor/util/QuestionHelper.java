@@ -106,20 +106,23 @@ public class QuestionHelper {
 
             // adds checkboxes onto the end of divs containing the code fragments
             Document editedDoc = Jsoup.parse(result);
-            Elements midDivs = editedDoc.select("div[class=\"mid\"]");
+            Elements midDivs = editedDoc.select("a");
             len = midDivs.size();
             Element tempElem;
             String tempCodeFrag;
             for (int i  = 0; i < len; i++) {
                 tempElem = midDivs.get(i);
                 tempCodeFrag = tempElem.html();
+                // unused code for checkbox implementation
+                // has conflicts with Jsoup or React resulting in an edited string that is incorrect
                 //tempStr = "<Checkbox value=\"" + tempCodeFrag + "\" onChange={handleChange} inputProps={{ \"aria-label\": \"controlled\"}} />";
-                tempStr = "<input value=\"" + tempCodeFrag + "\" onChange={handleChange} type=\"checkbox\"/>";
-                tempElem.after(tempStr);
+                //tempStr = "<input value=\"" + tempCodeFrag + "\" onChange={handleChange} type=\"checkbox\"/>";
+                tempStr  = "Code Fragment #" + (i + 1);
+                tempElem.before(tempStr);
             }
             result = editedDoc.toString();
             // For testing purposes, implement cleaner way
-            result = result.replaceAll("onchange=\"{handleChange}\"", "onChange={handleChange}");
+            //result = result.replaceAll("onchange=\"{handleChange}\"", "onChange={handleChange}");
 
             Process p = Runtime.getRuntime().exec(new String[] { "./goodbye.sh" });
             BufferedReader stdout = new BufferedReader(new InputStreamReader(p.getInputStream()));
