@@ -117,6 +117,11 @@ public class QuestionHelper {
                 // has conflicts with Jsoup or React resulting in an edited string that is incorrect
                 //tempStr = "<Checkbox value=\"" + tempCodeFrag + "\" onChange={handleChange} inputProps={{ \"aria-label\": \"controlled\"}} />";
                 //tempStr = "<input value=\"" + tempCodeFrag + "\" onChange={handleChange} type=\"checkbox\"/>";
+
+                if (i != 0 && i % 2 == 0) {
+                    tempStr  = "<br>>";
+                    tempElem.before(tempStr);
+                }
                 tempStr  = "Code Fragment #" + (i + 1);
                 tempElem.before(tempStr);
             }
