@@ -1,4 +1,4 @@
-package com.example.CryptoTutorKatalongTestSuite;
+package com.crypto_tutor.CryptoTutorKatalongTestSuite;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.apache.commons.io.FileUtils;
 import java.io.File;
@@ -19,8 +20,8 @@ public class Diff2html {
   JavascriptExecutor js;
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "");
-    driver = new ChromeDriver();
+    System.setProperty("webdriver.edge.driver", "C:\\chromedriver\\msedgedriver.exe");
+    driver = new EdgeDriver();
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     js = (JavascriptExecutor) driver;
@@ -42,7 +43,7 @@ public class Diff2html {
     driver.findElement(By.id("codefragment")).clear();
     driver.findElement(By.id("codefragment")).sendKeys("public void encrypt(Key key, int keysize, InputStream in, OutputStream out) throws EncryptorException {                CipherInputStream cis = null;                try {                        Cipher cipher = Cipher.getInstance(ALGORITHM);                        byte[] kb = key.getEncryptKey().length <= keysize / 7 ? key.getEncryptKey() : Arrays.copyOf(key.getEncryptKey(), keysize / 7);                        cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(kb, ALGORITHM), new IvParameterSpec(key.getIv()));                        cis = new CipherInputStream(in, cipher);                        IOToolkit.transmit(cis, out);                } catch (Exception e) {                        throw new EncryptorException(e);                } finally {                        IOToolkit.close(cis);                }        }");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    Thread.sleep(20000);
+    Thread.sleep(10000);
     driver.findElement(By.xpath("//input[@type='text']")).click();
     driver.findElement(By.xpath("//input[@type='text']")).clear();
     driver.findElement(By.xpath("//input[@type='text']")).sendKeys("1");
