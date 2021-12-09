@@ -1,4 +1,4 @@
-package com.example.CryptoTutorKatalongTestSuite;
+package com.crypto_tutor.CryptoTutorKatalongTestSuite;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.apache.commons.io.FileUtils;
 import java.io.File;
@@ -19,8 +20,8 @@ public class SearchQuestion {
   JavascriptExecutor js;
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "");
-    driver = new ChromeDriver();
+    System.setProperty("webdriver.edge.driver", "C:\\chromedriver\\msedgedriver.exe");
+    driver = new EdgeDriver();
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     js = (JavascriptExecutor) driver;
@@ -43,6 +44,7 @@ public class SearchQuestion {
     driver.findElement(By.xpath("//button[@type='submit']")).click();
     driver.findElement(By.xpath("//html")).click();
     driver.findElement(By.xpath("//button[@type='submit']")).click();
+    Thread.sleep(10000);
   }
 
   @After
