@@ -3,6 +3,7 @@ import "react-gh-like-diff/dist/css/diff2html.min.css";
 import ReactDiffViewer from "react-diff-viewer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ContextAPI } from "../ContextAPI";
+import "./Hook.css";
 
 function Hook() {
   const { code1 } = useContext(ContextAPI);

@@ -16,6 +16,9 @@ import com.crypto_tutor.models.Question;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.parser.ParseSettings;
+import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
 public class QuestionHelper {
@@ -68,7 +71,7 @@ public class QuestionHelper {
     }
 
     /**
-     * this will save the question's code fragment as a file
+     * this will parse the NiCad html file and return a formatted string
      * 
      * @param String the fileName to be looked for in the HTML
      * @return the file name of the newly created file
@@ -85,7 +88,6 @@ public class QuestionHelper {
             String tempStr;
             for (int i = 0; i < len; i++) {
                 {
-                    System.out.println("parseHTML method: Loop #" + i);
                     tempStr = inputClones.get(i)
                             // Below are 8 levels of the parent() method. Any more and it will retrive the
                             // whole file.
@@ -101,6 +103,31 @@ public class QuestionHelper {
                     result += tempStr;
                 }
             }
+
+            // adds checkboxes onto the end of divs containing the code fragments
+            Document editedDoc = Jsoup.parse(result);
+            Elements midDivs = editedDoc.select("a");
+            len = midDivs.size();
+            Element tempElem;
+            String tempCodeFrag;
+            for (int i  = 0; i < len; i++) {
+                tempElem = midDivs.get(i);
+                tempCodeFrag = tempElem.html();
+                // unused code for checkbox implementation
+                // has conflicts with Jsoup or React resulting in an edited string that is incorrect
+                //tempStr = "<Checkbox value=\"" + tempCodeFrag + "\" onChange={handleChange} inputProps={{ \"aria-label\": \"controlled\"}} />";
+                //tempStr = "<input value=\"" + tempCodeFrag + "\" onChange={handleChange} type=\"checkbox\"/>";
+
+                if (i != 0 && i % 2 == 0) {
+                    tempStr  = "<br>";
+                    tempElem.before(tempStr);
+                }
+                tempStr  = "Code Fragment #" + (i + 1) + ": ";
+                tempElem.before(tempStr);
+            }
+            result = editedDoc.toString();
+            // For testing purposes, implement cleaner way
+            //result = result.replaceAll("onchange=\"{handleChange}\"", "onChange={handleChange}");
 
             Process p = Runtime.getRuntime().exec(new String[] { "./goodbye.sh" });
             BufferedReader stdout = new BufferedReader(new InputStreamReader(p.getInputStream()));
