@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['getallanswers_0',['getAllAnswers',['../classcom_1_1crypto__tutor_1_1controllers_1_1_answer_controller.html#a30c0d7a69a50f89a1ccee2aff8fc68f5',1,'com.crypto_tutor.controllers.AnswerController.getAllAnswers()'],['../interfacecom_1_1crypto__tutor_1_1services_1_1_answer_service.html#ac260c9e944fbd9c04b1613ed6faa6ab0',1,'com.crypto_tutor.services.AnswerService.getAllAnswers()'],['../classcom_1_1crypto__tutor_1_1services_1_1_answer_service_impl.html#a78bdfc03b228659127c1d74d8fef6eff',1,'com.crypto_tutor.services.AnswerServiceImpl.getAllAnswers()']]],
+  ['getallquestions_1',['getAllQuestions',['../classcom_1_1crypto__tutor_1_1controllers_1_1_question_controller.html#a91283bee110ce61987a0208adfe71bd0',1,'com.crypto_tutor.controllers.QuestionController.getAllQuestions()'],['../interfacecom_1_1crypto__tutor_1_1services_1_1_question_service.html#adcd0aac93f8c1d376f9910938503e7b1',1,'com.crypto_tutor.services.QuestionService.getAllQuestions()'],['../classcom_1_1crypto__tutor_1_1services_1_1_question_service_impl.html#a839ea984d2317136e92eba5afb4fbdcb',1,'com.crypto_tutor.services.QuestionServiceImpl.getAllQuestions()']]],
+  ['getallstudents_2',['getAllStudents',['../classcom_1_1crypto__tutor_1_1services_1_1_user_service_impl.html#a3cba203b4b0a8553253df313ab8d2b30',1,'com::crypto_tutor::services::UserServiceImpl']]],
+  ['getanswer_3',['getAnswer',['../classcom_1_1crypto__tutor_1_1models_1_1_answer.html#aa4a97207e6643e21f341370652bd84dd',1,'com::crypto_tutor::models::Answer']]],
+  ['getanswerid_4',['getAnswerId',['../classcom_1_1crypto__tutor_1_1models_1_1_answer.html#af3de72164e523e87bf96d65defe4f5d2',1,'com::crypto_tutor::models::Answer']]],
+  ['getcodefragment_5',['getCodeFragment',['../classcom_1_1crypto__tutor_1_1models_1_1_question.html#a778fde34108dca68fbe547cd63290abd',1,'com::crypto_tutor::models::Question']]],
+  ['getdatetime_6',['getDateTime',['../classcom_1_1crypto__tutor_1_1models_1_1_question.html#ab392218b21d72f79f8edd89a8e1ec999',1,'com::crypto_tutor::models::Question']]],
+  ['getfilename_7',['getFileName',['../classcom_1_1crypto__tutor_1_1models_1_1_question.html#a85ba44e7f8acce11f0af180ae1bbe738',1,'com::crypto_tutor::models::Question']]],
+  ['getfilteredquestions_8',['getFilteredQuestions',['../classcom_1_1crypto__tutor_1_1controllers_1_1_question_controller.html#ad74895f9d4bebde1fcfe3bcb312bfb79',1,'com::crypto_tutor::controllers::QuestionController']]],
+  ['getpassword_9',['getPassword',['../classcom_1_1crypto__tutor_1_1models_1_1_user.html#a9beb75b99d4a96a56a65f7b8c5f31a73',1,'com::crypto_tutor::models::User']]],
+  ['getquestion_10',['getQuestion',['../classcom_1_1crypto__tutor_1_1models_1_1_question.html#aedb7f845ffcbf0994ebc3e2807bd66a8',1,'com::crypto_tutor::models::Question']]],
+  ['getquestionid_11',['getQuestionId',['../classcom_1_1crypto__tutor_1_1models_1_1_answer.html#a51d8d2678d2f0159b95a80e7aa9ef9c5',1,'com::crypto_tutor::models::Answer']]],
+  ['getschoolid_12',['getSchoolId',['../classcom_1_1crypto__tutor_1_1models_1_1_answer.html#a2bafc4e1207c8c543f6b28a02b4cb685',1,'com::crypto_tutor::models::Answer']]],
+  ['getschoolid_13',['getSchoolID',['../classcom_1_1crypto__tutor_1_1models_1_1_user.html#a96669acf5fbc2acb25ac8adc947ecd5a',1,'com::crypto_tutor::models::User']]],
+  ['getstudentid_14',['getStudentId',['../classcom_1_1crypto__tutor_1_1models_1_1_question.html#ac044328690960beb2f865d8e3b64185a',1,'com::crypto_tutor::models::Question']]],
+  ['getusername_15',['getUsername',['../classcom_1_1crypto__tutor_1_1models_1_1_question.html#ab45965c966661a0ef7f42208814b0f1e',1,'com.crypto_tutor.models.Question.getUsername()'],['../classcom_1_1crypto__tutor_1_1models_1_1_user.html#af5149e91cc4f1e2bd50f85cd1b7f36a1',1,'com.crypto_tutor.models.User.getUsername()']]],
+  ['getusername_16',['getUserName',['../classcom_1_1crypto__tutor_1_1models_1_1_answer.html#a8d5f27f102039e3357886a6da8c4766a',1,'com::crypto_tutor::models::Answer']]],
+  ['getusertype_17',['getUserType',['../classcom_1_1crypto__tutor_1_1models_1_1_user.html#a0e181dd075281b19a9e75a72daa28327',1,'com::crypto_tutor::models::User']]]
+];
