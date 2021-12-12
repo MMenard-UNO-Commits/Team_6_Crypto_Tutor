@@ -12,6 +12,10 @@ import org.openqa.selenium.support.ui.Select;
 import org.apache.commons.io.FileUtils;
 import java.io.File;
 
+/**
+ * this is the test class for opeing the website and testing traversal around it.
+ * @author Tommy Nelson
+ */
 public class OpeningWebpage {
   private WebDriver driver;
   private String baseUrl;
@@ -27,6 +31,10 @@ public class OpeningWebpage {
     js = (JavascriptExecutor) driver;
   }
 
+  /**
+   * test for opening to the dashboard and traversing around the website
+   * @throws Exception
+   */
   @Test
   public void testOpeningWebpage() throws Exception {
     driver.get("http://104.131.172.9:8080/web/");
@@ -35,6 +43,10 @@ public class OpeningWebpage {
     driver.findElement(By.linkText("🔍Search Questions")).click();
   }
 
+  /**
+   * auto generated code from katalon
+   * @throws Exception
+   */
   @After
   public void tearDown() throws Exception {
     driver.quit();
@@ -44,6 +56,11 @@ public class OpeningWebpage {
     }
   }
 
+  /**
+   * auto generated code
+   * @param by
+   * @return
+   */
   private boolean isElementPresent(By by) {
     try {
       driver.findElement(by);
@@ -53,6 +70,10 @@ public class OpeningWebpage {
     }
   }
 
+  /**
+   * auto generated code
+   * @return
+   */
   private boolean isAlertPresent() {
     try {
       driver.switchTo().alert();
@@ -62,6 +83,10 @@ public class OpeningWebpage {
     }
   }
 
+  /**
+   * auto generated code
+   * @return
+   */
   private String closeAlertAndGetItsText() {
     try {
       Alert alert = driver.switchTo().alert();
