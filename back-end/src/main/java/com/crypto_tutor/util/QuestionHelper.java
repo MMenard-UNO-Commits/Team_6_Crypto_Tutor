@@ -21,6 +21,10 @@ import org.jsoup.parser.ParseSettings;
 import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
+/**
+ * This call handles saving question fragments as java files
+ * It also runs nicad and sends the formated data to front end
+ */
 public class QuestionHelper {
 
     public static final String DIR_LOC = "comparisonFiles_functions-blind-clones/comparisonFiles_functions-blind-clones-0.30-classes-withsource.html";

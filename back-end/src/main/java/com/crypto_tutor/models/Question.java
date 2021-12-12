@@ -142,6 +142,11 @@ public class Question {
         this.fileName = fileName;
     }
 
+    /**
+     * the to string allows us to easily output important information 
+     * about the question in a readable manner
+     * @return the question as a string
+     */
     @Override
     public String toString() {
         return "{" +

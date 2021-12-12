@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
+/**
+ * this is the controller for the user, will help add users to the database using getmapping and postmapping
+ * 
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/user")
@@ -23,9 +26,13 @@ public class UserController {
 
 
 
+    /**
+     * this will add a singlular user to the database
+     * @param user is the user object to be added
+     * @return is the string saying we added the user
+     */
     @Autowired
     UserService userService;
-
     @PostMapping("/add")
     public String add(@RequestBody User user) {
         userService.saveUser(user);

@@ -114,43 +114,12 @@ public class QuestionController {
         filteredList = QuestionHelper.scrubStudentIDs(filteredList);
         return filteredList;
     }
-
-    /*
-     * @GetMapping("/compareAll")
-     * public static String doComparison() {
-     * String result = "";
-     * try {
-     * Process p = Runtime.getRuntime().exec(new String[] { "./hello.sh" });
-     * BufferedReader stdout = new BufferedReader(new
-     * InputStreamReader(p.getInputStream()));
-     * BufferedReader stderr = new BufferedReader(new
-     * InputStreamReader(p.getErrorStream()));
-     * String line;
-     * while ((line = stdout.readLine()) != null) {
-     * System.out.println(line);
-     * }
-     * while ((line = stderr.readLine()) != null) {
-     * result += line + "\n";
-     * }
-     * p.waitFor();
-     * return result;
-     * } catch (Exception e) {
-     * }
-     * return result;
-     * }
-     * 
-     * @GetMapping("/testJsoup")
-     * public static String doTestJsoup() {
-     * String htmlResult =
-     * QuestionHelper.parseHTML("/var/lib/tomcat9/webapps/back-end-0.0.1-SNAPSHOT/"
-     * +
-     * "comparisonFiles_functions-blind-clones/comparisonFiles_functions-blind-clones-0.30-classes-withsource.html"
-     * );
-     * System.out.println(htmlResult);
-     * return htmlResult;
-     * }
-     */
-
+    
+     /**
+      * individual add question was made for testing program
+      * @param question question to be added
+      * @return a string as a response saying added question
+      */
     @PostMapping("/addquestion")
     public String test(@RequestBody Question question) {
         questionService.saveQuestion(question);
