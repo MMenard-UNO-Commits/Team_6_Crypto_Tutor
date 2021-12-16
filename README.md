@@ -23,19 +23,19 @@ Installation Instructions:
 
 4. Download the source code from the GitHub repository. Ensure that you have NPM and Maven installed on your build system or you will not be able to build the application. 
 
-5.Go into the back-end folder in the project and find application.properties. Update the URL, username, and password properties to reflect the URL of your server, the name of the database you created, and the username and password of the user you created for accessing data through the back end. If you have any data that you wish to compare your user inputs to using NiCad, put the code base that you want to compare into the directory “comparisonFiles”, which is found within the “comparisonFilesContainer” directory in the root of the “back-end” directory. This code base must be in its own separate directory, within the comparisonFiles directory. If it is not and the files are just loose in the root of the comparisonFiles directory all of them will be deleted during NiCad cleanup. 
+5. Go into the back-end folder in the project and find application.properties. Update the URL, username, and password properties to reflect the URL of your server, the name of the database you created, and the username and password of the user you created for accessing data through the back end. If you have any data that you wish to compare your user inputs to using NiCad, put the code base that you want to compare into the directory “comparisonFiles”, which is found within the “comparisonFilesContainer” directory in the root of the “back-end” directory. This code base must be in its own separate directory, within the comparisonFiles directory. If it is not and the files are just loose in the root of the comparisonFiles directory all of them will be deleted during NiCad cleanup. 
 
-6.Build the project using maven clean and compile, and then build a war file of the project, naming the war what you wish. 
+6. Build the project using maven clean and compile, and then build a war file of the project, naming the war what you wish. 
 
-7.On the front-end, in the Dashboard.js and QuestionPage.js files, change the URL of all of the fetch statements to match the URL of your server. Also change the “back-end” after the 8080 to reflect the name of your back end application’s war from the previous step. 
+7. On the front-end, in the Dashboard.js and QuestionPage.js files, change the URL of all of the fetch statements to match the URL of your server. Also change the “back-end” after the 8080 to reflect the name of your back end application’s war from the previous step. 
 
-8.Use the command “npm install” in the cypto-tutor directory to install all of the node modules needed for the project. Then use the command “npm run compile”, command derived from Roberto on stack overflow (Awan, A. et al.), to build a war file containing the front end application. Name this war file what you wish. 
+8. Use the command “npm install” in the cypto-tutor directory to install all of the node modules needed for the project. Then use the command “npm run compile”, command derived from Roberto on stack overflow (Awan, A. et al.), to build a war file containing the front end application. Name this war file what you wish. 
 
-9.Go to the tomcat manager for your server and deploy both applications. When you deploy the applications all of the SQL tables should be generated automatically. If they are not, check the information in your application.properties file for errors. 
+9. Go to the tomcat manager for your server and deploy both applications. When you deploy the applications all of the SQL tables should be generated automatically. If they are not, check the information in your application.properties file for errors. 
 
-10.Populate the list of users you wish to have using the MySQL console. user type should be 0 if the user is a student, 1 if they are an instructor, and 2 if they are an admin. 
+10. Populate the list of users you wish to have using the MySQL console. user type should be 0 if the user is a student, 1 if they are an instructor, and 2 if they are an admin. 
 
-11.Find the bash scripts folder and open both hello.sh and goodbye.sh. Modify those files in the following ways: 
+11. Find the bash scripts folder and open both hello.sh and goodbye.sh. Modify those files in the following ways: 
 
     A. In hello.sh, on the first line of the script, change the cd command so that the directory being changed to reflects the installation directory of your NiCad-6.2 folder that you put on the server earlier. On the second line modify the directory indicated in the NiCad command to be the installation directory of your back end application. This would take the form of “your/tomcat/install/webapps/yourWarName/comparisonFiles” with comparison files being the place where code fragment files will be saved. This should have been automatically created, but if it wasn’t it will be upon submitting the first question to the system. If it is still not created after attempting a question submission simply add the directory “comparisonFiles” to the root of your back end applications web app directory. This file runs NiCad against the saved code fragments on your system. 
 
