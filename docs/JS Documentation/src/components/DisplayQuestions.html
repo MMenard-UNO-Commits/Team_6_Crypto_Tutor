@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>DisplayQuestions.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="..\..\docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="..\..\server.html">
+                  server.js
+                </a>
+              
+                
+                <a class="source" href="..\App.html">
+                  src/App.js
+                </a>
+              
+                
+                <a class="source" href="..\ContextAPI.html">
+                  src/ContextAPI.js
+                </a>
+              
+                
+                <a class="source" href="Dashboard.html">
+                  src/components/Dashboard.js
+                </a>
+              
+                
+                <a class="source" href="DisplayQuestions.html">
+                  src/components/DisplayQuestions.js
+                </a>
+              
+                
+                <a class="source" href="Hook.html">
+                  src/components/Hook.js
+                </a>
+              
+                
+                <a class="source" href="Hook.html">
+                  src/components/Hook.js
+                </a>
+              
+                
+                <a class="source" href="Login.html">
+                  src/components/Login.js
+                </a>
+              
+                
+                <a class="source" href="NotFound.html">
+                  src/components/NotFound.js
+                </a>
+              
+                
+                <a class="source" href="Option.html">
+                  src/components/Option.js
+                </a>
+              
+                
+                <a class="source" href="Preferences.html">
+                  src/components/Preferences.js
+                </a>
+              
+                
+                <a class="source" href="QuestionPage.html">
+                  src/components/QuestionPage.js
+                </a>
+              
+                
+                <a class="source" href="Results.html">
+                  src/components/Results.js
+                </a>
+              
+                
+                <a class="source" href="useToken.html">
+                  src/components/useToken.js
+                </a>
+              
+                
+                <a class="source" href="..\index.html">
+                  src/index.js
+                </a>
+              
+                
+                <a class="source" href="..\reportWebVitals.html">
+                  src/reportWebVitals.js
+                </a>
+              
+                
+                <a class="source" href="..\setupTests.html">
+                  src/setupTests.js
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>DisplayQuestions.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-1">&#x00a7;</a>
+              </div>
+              <p>Function to display the query results in the Dashboard
+props - Array of query results to be processed
+returns results which are individually bordered with dividers separating the
+username, submission time, question, and code fragment in question</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./DisplayQuestions.css&quot;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">DisplayQuestions</span>(<span class="hljs-params">props</span>) {
+
+    <span class="hljs-keyword">return</span> (
+        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{border:</span> &quot;<span class="hljs-attr">3px</span> <span class="hljs-attr">solid</span> <span class="hljs-attr">black</span>&quot;,
+                     <span class="hljs-attr">width:</span> &quot;<span class="hljs-attr">40</span>%&quot;}}&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;username&quot;</span>&gt;</span>Username:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;username&quot;</span>&gt;</span>
+                {props.question.username}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">hr</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;4&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;dateTime&quot;</span>&gt;</span>Date and Time of Submission:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;dateTime&quot;</span>&gt;</span>
+                {props.question.dateTime}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">hr</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;4&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;question&quot;</span>&gt;</span>Question:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;question&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{props.question.question}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">hr</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;4&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;codeFragment&quot;</span>&gt;</span>Code Fragment:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;codeFragment&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{props.question.codeFragment}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    );
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

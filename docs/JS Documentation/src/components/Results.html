@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Results.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="..\..\docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="..\..\server.html">
+                  server.js
+                </a>
+              
+                
+                <a class="source" href="..\App.html">
+                  src/App.js
+                </a>
+              
+                
+                <a class="source" href="..\ContextAPI.html">
+                  src/ContextAPI.js
+                </a>
+              
+                
+                <a class="source" href="Dashboard.html">
+                  src/components/Dashboard.js
+                </a>
+              
+                
+                <a class="source" href="DisplayQuestions.html">
+                  src/components/DisplayQuestions.js
+                </a>
+              
+                
+                <a class="source" href="Hook.html">
+                  src/components/Hook.js
+                </a>
+              
+                
+                <a class="source" href="Hook.html">
+                  src/components/Hook.js
+                </a>
+              
+                
+                <a class="source" href="Login.html">
+                  src/components/Login.js
+                </a>
+              
+                
+                <a class="source" href="NotFound.html">
+                  src/components/NotFound.js
+                </a>
+              
+                
+                <a class="source" href="Option.html">
+                  src/components/Option.js
+                </a>
+              
+                
+                <a class="source" href="Preferences.html">
+                  src/components/Preferences.js
+                </a>
+              
+                
+                <a class="source" href="QuestionPage.html">
+                  src/components/QuestionPage.js
+                </a>
+              
+                
+                <a class="source" href="Results.html">
+                  src/components/Results.js
+                </a>
+              
+                
+                <a class="source" href="useToken.html">
+                  src/components/useToken.js
+                </a>
+              
+                
+                <a class="source" href="..\index.html">
+                  src/index.js
+                </a>
+              
+                
+                <a class="source" href="..\reportWebVitals.html">
+                  src/reportWebVitals.js
+                </a>
+              
+                
+                <a class="source" href="..\setupTests.html">
+                  src/setupTests.js
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>Results.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-1">&#x00a7;</a>
+              </div>
+              <p>Displays results of query for questions that are similar to that of
+one that was just submitted on the question page</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-2">&#x00a7;</a>
+              </div>
+              <p>The query is performed via NiCad on the backend
+and is rendered here on the frontend</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-3">&#x00a7;</a>
+              </div>
+              <p>User is prompted to select two code fragments they wish to compare</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span>, { useContext } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Context</span>API } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../ContextAPI&quot;</span>;
+<span class="hljs-keyword">import</span> { useHistory } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router-dom&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Form</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-bootstrap/Form&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Button</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-bootstrap/Button&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./Results.css&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Results</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> { past } = <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">Context</span>API);
+
+  <span class="hljs-keyword">const</span> { setCode1 } = <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">Context</span>API);
+  <span class="hljs-keyword">const</span> { setCode2 } = <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">Context</span>API);
+  <span class="hljs-keyword">let</span> history = <span class="hljs-title function_">useHistory</span>();
+  <span class="hljs-keyword">const</span> { selectedCodeFragment1, setSelectedCodeFragment1 } =
+    <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">Context</span>API);
+  <span class="hljs-keyword">const</span> { selectedCodeFragment2, setSelectedCodeFragment2 } =
+    <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">Context</span>API);
+  <span class="hljs-keyword">const</span> { parsedArray } = <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">Context</span>API);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-4">&#x00a7;</a>
+              </div>
+              <p>Sets the global values for the code fragments to be compared
+then redirects the user to the page where they are compared</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">handleSubmit</span>(<span class="hljs-params">e</span>) {
+    e.<span class="hljs-title function_">preventDefault</span>();
+    <span class="hljs-title function_">setCode1</span>(parsedArray[selectedCodeFragment1 - <span class="hljs-number">1</span>]);
+    <span class="hljs-title function_">setCode2</span>(parsedArray[selectedCodeFragment2 - <span class="hljs-number">1</span>]);
+
+
+    history.<span class="hljs-title function_">push</span>(<span class="hljs-string">&quot;/hook&quot;</span>);
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-5">&#x00a7;</a>
+              </div>
+              <p>Renders the page</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;p-3 mb-2 bg-light bg-opacity-20 text-dark&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{resize:</span> &quot;<span class="hljs-attr">both</span>&quot;, <span class="hljs-attr">overflow:</span> &quot;<span class="hljs-attr">auto</span>&quot;}}&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;h2&quot;</span>&gt;</span>Results<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">dangerouslySetInnerHTML</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">__html:</span> <span class="hljs-attr">past</span> }} /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;h2&quot;</span>&gt;</span>Choose two code fragments to compare:<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Form</span> <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{handleSubmit}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Form.Group</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;lg&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">Form.Label</span>&gt;</span>Code Fragment Number<span class="hljs-tag">&lt;/<span class="hljs-name">Form.Label</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">Form.Control</span>
+            <span class="hljs-attr">autoFocus</span>
+            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+            <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;form-control&quot;</span>
+            <span class="hljs-attr">onChange</span>=<span class="hljs-string">{(e)</span> =&gt;</span> setSelectedCodeFragment1(e.target.value)}
+          /&gt;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Form.Group</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">Form.Group</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;lg&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">Form.Label</span>&gt;</span>Code Fragment Number <span class="hljs-tag">&lt;/<span class="hljs-name">Form.Label</span>&gt;</span>
+
+          <span class="hljs-tag">&lt;<span class="hljs-name">Form.Control</span>
+            <span class="hljs-attr">autoFocus</span>
+            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+            <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;form-control&quot;</span>
+            <span class="hljs-attr">onChange</span>=<span class="hljs-string">{(e)</span> =&gt;</span> setSelectedCodeFragment2(e.target.value)}
+          /&gt;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Form.Group</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;btn btn-info m-3&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;lg&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>
+          Submit
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Form</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

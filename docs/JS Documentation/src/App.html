@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>App.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="..\docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="..\server.html">
+                  server.js
+                </a>
+              
+                
+                <a class="source" href="App.html">
+                  src/App.js
+                </a>
+              
+                
+                <a class="source" href="ContextAPI.html">
+                  src/ContextAPI.js
+                </a>
+              
+                
+                <a class="source" href="components\Dashboard.html">
+                  src/components/Dashboard.js
+                </a>
+              
+                
+                <a class="source" href="components\DisplayQuestions.html">
+                  src/components/DisplayQuestions.js
+                </a>
+              
+                
+                <a class="source" href="components\Hook.html">
+                  src/components/Hook.js
+                </a>
+              
+                
+                <a class="source" href="components\Hook.html">
+                  src/components/Hook.js
+                </a>
+              
+                
+                <a class="source" href="components\Login.html">
+                  src/components/Login.js
+                </a>
+              
+                
+                <a class="source" href="components\NotFound.html">
+                  src/components/NotFound.js
+                </a>
+              
+                
+                <a class="source" href="components\Option.html">
+                  src/components/Option.js
+                </a>
+              
+                
+                <a class="source" href="components\Preferences.html">
+                  src/components/Preferences.js
+                </a>
+              
+                
+                <a class="source" href="components\QuestionPage.html">
+                  src/components/QuestionPage.js
+                </a>
+              
+                
+                <a class="source" href="components\Results.html">
+                  src/components/Results.js
+                </a>
+              
+                
+                <a class="source" href="components\useToken.html">
+                  src/components/useToken.js
+                </a>
+              
+                
+                <a class="source" href="index.html">
+                  src/index.js
+                </a>
+              
+                
+                <a class="source" href="reportWebVitals.html">
+                  src/reportWebVitals.js
+                </a>
+              
+                
+                <a class="source" href="setupTests.html">
+                  src/setupTests.js
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>App.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-1">&#x00a7;</a>
+              </div>
+              <p>Main application</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-2">&#x00a7;</a>
+              </div>
+              <p>Contains routers to each component that is allowed to be displayed on the webpage</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-3">&#x00a7;</a>
+              </div>
+              <p>To add a new component, import it, then add it as a new route in the Switch below</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./App.css&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Navbar</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-bootstrap/Navbar&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Nav</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-bootstrap/Nav&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">LinkContainer</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router-bootstrap&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">BrowserRouter</span>, <span class="hljs-title class_">Route</span>, <span class="hljs-title class_">Switch</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router-dom&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Dashboard</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/Dashboard&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Preferences</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/Preferences&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Question</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/QuestionPage&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">NotFound</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/NotFound&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Results</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/Results&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">CheckboxesProvider</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./ContextAPI&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Hook</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/Hook&quot;</span>;
+<span class="hljs-keyword">import</span> {<span class="hljs-title class_">Helmet</span>} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-helmet&#x27;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-4">&#x00a7;</a>
+              </div>
+              <p>Dummied out login function</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-5">&#x00a7;</a>
+              </div>
+              <p>const { token, setToken } = useToken();</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-6">&#x00a7;</a>
+              </div>
+              <p>if (!token) {
+ return <Login setToken={setToken} />; //If not logged in, shows this page until successful login
+}</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-7">&#x00a7;</a>
+              </div>
+              <p>Renders the webpage</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Helmet</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span>{&#x27;body { background-color: rgb(213, 213, 213); }&#x27;}<span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Helmet</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">CheckboxesProvider</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">BrowserRouter</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">Navbar</span> <span class="hljs-attr">collapseOnSelect</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">LinkContainer</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/dashboard&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">Navbar.Brand</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;test&quot;</span>&gt;</span>📖CryptoTutor<span class="hljs-tag">&lt;/<span class="hljs-name">Navbar.Brand</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">LinkContainer</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Navbar.Toggle</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Navbar.Collapse</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">Nav</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">LinkContainer</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/dashboard&quot;</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">Nav.Link</span>&gt;</span>🔍Search Questions<span class="hljs-tag">&lt;/<span class="hljs-name">Nav.Link</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">LinkContainer</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">LinkContainer</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/questionpage&quot;</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">Nav.Link</span>&gt;</span>❓Ask Question<span class="hljs-tag">&lt;/<span class="hljs-name">Nav.Link</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">LinkContainer</span>&gt;</span>
+                {/*<span class="hljs-tag">&lt;<span class="hljs-name">LinkContainer</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">Nav.Link</span>
+                    <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> {
+                      localStorage.clear();
+                      window.location.reload(false);
+                    }}
+                  &gt;
+                    Log Out
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">Nav.Link</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">LinkContainer</span>&gt;</span>*/}
+              <span class="hljs-tag">&lt;/<span class="hljs-name">Nav</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">Navbar.Collapse</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">Navbar</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">Switch</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">&quot;/dashboard&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">Dashboard</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">Route</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">&quot;/preferences&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">Preferences</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">Route</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">&quot;/questionpage&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">Question</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">Route</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">&quot;/hook&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">Hook</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">Route</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">&quot;/results&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">Results</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">Route</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Route</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">NotFound</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">Route</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">Switch</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">BrowserRouter</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">CheckboxesProvider</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

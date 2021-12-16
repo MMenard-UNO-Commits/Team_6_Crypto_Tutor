@@ -1,5 +1,7 @@
-//Dummied-out login page, which would have prompted the user for login
-//information before they were allowed to use the rest of the program
+/**
+  *Dummied-out login page, which would have prompted the user for login
+  *information before they were allowed to use the rest of the program
+  */
 
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
