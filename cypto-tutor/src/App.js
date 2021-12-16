@@ -1,3 +1,9 @@
+//Main application
+
+//Contains routers to each component that is allowed to be displayed on the webpage
+
+//To add a new component, import it, then add it as a new route in the Switch below
+
 import "./App.css";
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
@@ -15,17 +21,15 @@ import {Helmet} from 'react-helmet';
 
 function App() {
 
-  //Dummied out login functionality
+  //Dummied out login function
 
   //const { token, setToken } = useToken();
 
   //if (!token) {
   //  return <Login setToken={setToken} />; //If not logged in, shows this page until successful login
   //}
-  //Add route path to add new page to application
-  //If improper route is specified in URL, returns 404 error page
 
-  //Need better solution for logout button but it works for now
+  //Renders the webpage
   return (
     <div className="container">
       <Helmet>

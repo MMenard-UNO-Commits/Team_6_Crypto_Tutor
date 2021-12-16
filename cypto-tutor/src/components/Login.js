@@ -1,8 +1,11 @@
+//Dummied-out login page, which would have prompted the user for login
+//information before they were allowed to use the rest of the program
+
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Login.css';
 
-//Makes POST request to server
+//Makes POST request to the server to obtain a token using user-provided login credentials
 async function loginUser(credentials) {
  return fetch('http://localhost:8080/login', {
    method: 'POST',
@@ -14,6 +17,7 @@ async function loginUser(credentials) {
    .then(data => data.json())
 }
 
+//Sets the token to be posted to the server
 export default function Login({ setToken }) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
@@ -27,6 +31,7 @@ export default function Login({ setToken }) {
     setToken(token);
   }
 
+  //Renders the login page, providing the user boxes to enter credentials in
   return(
     <div className="login-wrapper">
       <h1>Please Log In</h1>

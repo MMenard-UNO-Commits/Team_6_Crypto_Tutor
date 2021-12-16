@@ -1,3 +1,8 @@
+//Function to display the query results in the Dashboard
+//props - Array of query results to be processed
+//returns results which are individually bordered with dividers separating the
+//username, submission time, question, and code fragment in question
+
 import React from "react";
 import "./DisplayQuestions.css"
 

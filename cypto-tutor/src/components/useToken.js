@@ -1,4 +1,5 @@
-//Stores token in localStorage, allowing user to stay logged in while switching between pages and tabs
+//Dummied-out function that stores token in localStorage,
+//allowing user to stay logged in while switching between pages and tabs
 
 import { useState } from 'react';
 

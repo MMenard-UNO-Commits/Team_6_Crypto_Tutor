@@ -1,3 +1,11 @@
+//Dashboard page
+
+//Queries the user for a prexisting question or
+//code fragment in the database they would like to search for.
+
+//Search results are individually bordered with dividers separating the
+//username, submission time, question, and code fragment in question
+
 import "./Dashboard.css";
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
@@ -26,7 +34,7 @@ export default function Dashboard() {
     setQuestions(pulledQuestions);
     setQuestionMap(questions.map(question => <DisplayQuestions question={question} />));
 
-
+    
   }
 
   async function pullUsers(){

@@ -1,4 +1,5 @@
-
+//Provides variables that can be accessed throughout the application
+//Think of these like public variables in a Java program
    
 import React, { createContext, useState } from "react";
 
@@ -12,10 +13,6 @@ export const CheckboxesProvider = (props) => {
   const [past, setPast] = useState("");
   const [selectedCodeFragment1, setSelectedCodeFragment1] = useState("");
   const [selectedCodeFragment2, setSelectedCodeFragment2] = useState("");
-  // const [text, setText] = useState({
-  //   selectedCodeFragment1: "",
-  //   selectedCodeFragment2: "",
-  // });
 
   return (
     <ContextAPI.Provider

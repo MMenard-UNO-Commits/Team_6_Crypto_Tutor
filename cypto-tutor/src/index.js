@@ -1,12 +1,13 @@
+//First file read when launching the webpage
+//Specify the component to be launched as the main applciation to be loaded below
+//In this case, App is our main application
+
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-//import pull from "./test.html";
 import "bootstrap/dist/css/bootstrap.css";
-
-//const root = document.getElementById('test.html');
 
 ReactDOM.render(
   <React.StrictMode>

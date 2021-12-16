@@ -1,4 +1,4 @@
-//API to fetch user token
+//Dummied-out API to fetch user token
 //Start server using the following command: node server.js
 
 const express = require ('express');

@@ -1,3 +1,5 @@
+//404 error page that is rendered if an invalid route is specified in the URL
+
 import React from "react";
 import "./NotFound.css";
 

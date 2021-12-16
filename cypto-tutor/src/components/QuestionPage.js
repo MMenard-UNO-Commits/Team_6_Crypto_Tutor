@@ -1,3 +1,9 @@
+//Form to submit questions to the database
+
+//Takes user's username, student ID, question, and a code fragment,
+//inserts them into the database, then queries the database for any
+//questions present that are similar to the one that was just sumbmitted
+
 import React, { useState, useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -16,6 +22,7 @@ export default function QuestionPage() {
 
   let history = useHistory();
 
+  //Checks form to make sure values were entered in each box
   function validateForm() {
     return (
       username.length > 0 &&
@@ -25,6 +32,7 @@ export default function QuestionPage() {
     );
   }
 
+  //POSTs form to the database then redirects user to results page of similar questions
   async function handleSubmit(event) {
     event.preventDefault();
     console.log("form submitted");
@@ -67,6 +75,7 @@ export default function QuestionPage() {
     history.push("/results");
   }
 
+  //Renders the page
   return (
     <div className="p-3 mb-2 bg-light bg-opacity-20 text-dark">
       <h4 key="heading" className="h4"> Ask Questions </h4>

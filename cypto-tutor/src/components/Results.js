@@ -1,3 +1,11 @@
+//Displays results of query for questions that are similar to that of
+//one that was just submitted on the question page
+
+//The query is performed via NiCad on the backend
+//and is rendered here on the frontend
+
+//User is prompted to select two code fragments they wish to compare
+
 import React, { useContext } from "react";
 import { ContextAPI } from "../ContextAPI";
 import { useHistory } from "react-router-dom";
@@ -18,7 +26,8 @@ export default function Results() {
   const { parsedArray } = useContext(ContextAPI);
 
  
-
+  //Sets the global values for the code fragments to be compared
+  //then redirects the user to the page where they are compared
   function handleSubmit(e) {
     e.preventDefault();
     setCode1(parsedArray[selectedCodeFragment1 - 1]);
@@ -28,6 +37,7 @@ export default function Results() {
     history.push("/hook");
   }
 
+  //Renders the page
   return (
     <div className="p-3 mb-2 bg-light bg-opacity-20 text-dark" style={{resize: "both", overflow: "auto"}}>
       <h2 className="h2">Results</h2>
