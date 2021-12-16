@@ -122,6 +122,10 @@ public class QuestionController {
       */
     @PostMapping("/addquestion")
     public String test(@RequestBody Question question) {
+        String creationTime = LocalTime.now().toString();
+        String newFileName = question.getUsername() + "-" + creationTime + ".java";
+        question.setDateTime(creationTime);
+        question.setFileName(newFileName);
         questionService.saveQuestion(question);
         return "questions added";
     }
