@@ -10,7 +10,7 @@ export default function DisplayQuestions(props) {
 
     return (
         <div style={{border: "3px solid black",
-                     width: "40%"}}>
+                     width: "100%"}}>
             <label for="username">Username:</label>
             <div id="username">
                 {props.question.username}

@@ -66,13 +66,20 @@ $(function() {
   <div class="headertitle"><div class="title">Team_6_Crypto_Tutor </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md_README"></a>Summary of the system: Our team is seeking to design a system that will become the foundation for a question and answer service for students learning about java cryptographic libraries. Using our system students will be able to make searches based on code snippets that are being flagged as unsecure by a complementary eclipse plugin and find questions that have been asked that use similar code snippets. Using this principle our hope is that students will be able to find answers to their questions more reliably and quickly. If they cannot find an answer to the question that they have they can also submit a new question with their code snippet and a description of a problem. From there both students in the same class and the instructors of the course will be able to provide guidance to students who have questions, with the most successful answers being able to be upvoted to highlight them.</p>
-<p >Students will be able to enter a question that they have with a relevant code snippet and submit the question for a search. Our UI will then pipe this information to our back-end server which will compare the student's code snippet to other questions' code snippets using a tool called NiCad to determine the similarity of the code. This similarity rating will allow us to rank order the most relevant questions to recommend and return to the student so they can attempt to find answers to their question. If they do not find answers to the specific question they are looking for, they can then submit their original question as a new question for the system, which will then log the information for further searches.</p>
-<p >Students and faculty can also go through the list of questions from newest to oldest and respond to them in a forum-like style. They do this by selecting the question and selecting the option to answer the question. From there they can put in a code snippet of their own, as well as a description of the code and a recommendation of action for the user who asked the question.</p>
-<p >Update 0.1: During this update we created a basic starting UI for our system that includes fields for a student name and ID, as well as a question field where the code snippet goes and a description fields where a description of the problem can be specified.</p>
-<p >Update 0.2: Worked on creating basic NiCad comparison functionality and displaying it to a sample webpage using PHP and Java servlet.</p>
-<p >Update 0.3: Refactored the project to work with spring boot as a backend instead of PHP. Created some models for our repositories and added functionality for creating java files when questions are submitted.</p>
-<p >Update 0.4: Final update before version 1.0. Created remaining models and implemented NiCad search functionality. Also implemented a starter on the dashboard for the front page of our web application. Used JSoup and Java runtime in order to garner NiCad results using the back end. </p>
+<div class="textblock"><p ><a class="anchor" id="md_README"></a>Summary of application: This application is a tool that is designed at helping students find suggestions on how to properly implement java cryptographic libraries. 
+<p>The system consists of two applications, a back end that processes student queries against the code repository hosted on the server and saves student questions as persistent data in a MySQL database, and a front end that allows students to compare their functions to functions contained within the code repository in the back end using a tool called NiCad, as well as allowing them to view the previous queries of other students so they can compare their code to others, and even run other's code back through the NiCad form. The NiCad form also allows students to use a diff finding tool to compare variuos code fragments that are returned on to the front end. This application is licensed under the MIT license, so copying and modification of the code is allowed and encouraged for your projects!</p>
+<br>
+<p>Release Notes:</p>
+<br>
+<p>Update 0.1: During this update we created a basic starting UI for our system that includes fields for a student name and ID, as well as a question field where the code snippet goes and a description fields where a description of the problem can be specified.</p>
+<br>
+<p>Update 0.2: Worked on creating basic NiCad comparison functionality and displaying it to a sample webpage using PHP and Java servlet.</p>
+<br>
+<p>Update 0.3: Refactored the project to work with spring boot as a backend instead of PHP. Created some models for our repositories and added functionality for creating java files when questions are submitted.</p>
+<br>
+<p>Update 0.4: Final update before version 1.0. Created remaining models and implemented NiCad search functionality. Also implemented a starter on the dashboard for the front page of our web application. Used JSoup and Java runtime in order to garner NiCad results using the back end.</p>
+<br>
+<p>Update 1.0: Final update of this project. Got a fully functional dashboard form working that allows users to search through the question repository filtering by keywords and usernames. Also fully implemented the Diff finding functionality for the NiCad results page and changed the look and formatting of the tool significantly.</p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
