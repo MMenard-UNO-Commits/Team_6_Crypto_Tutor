@@ -4,7 +4,7 @@
 
 import React, { useContext } from "react";
 import "react-gh-like-diff/dist/css/diff2html.min.css";
-import ReactDiffViewer from "react-diff-viewer";
+import ReactDiffViewer, { DiffMethod } from "react-diff-viewer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ContextAPI } from "../ContextAPI";
 
@@ -18,6 +18,9 @@ function Hook() {
         oldValue={code1}
         newValue={code2}
         splitView={true}
+        compareMethod={DiffMethod.WORDS}
+        leftTitle="First Code Fragment"
+        rightTitle="Second Code Fragment"
       />
     </div>
   );
