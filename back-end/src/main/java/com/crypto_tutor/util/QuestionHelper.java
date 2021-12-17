@@ -114,24 +114,28 @@ public class QuestionHelper {
             len = midDivs.size();
             Element tempElem;
             String tempCodeFrag;
-            for (int i  = 0; i < len; i++) {
+            for (int i = 0; i < len; i++) {
                 tempElem = midDivs.get(i);
                 tempCodeFrag = tempElem.html();
                 // unused code for checkbox implementation
-                // has conflicts with Jsoup or React resulting in an edited string that is incorrect
-                //tempStr = "<Checkbox value=\"" + tempCodeFrag + "\" onChange={handleChange} inputProps={{ \"aria-label\": \"controlled\"}} />";
-                //tempStr = "<input value=\"" + tempCodeFrag + "\" onChange={handleChange} type=\"checkbox\"/>";
+                // has conflicts with Jsoup or React resulting in an edited string that is
+                // incorrect
+                // tempStr = "<Checkbox value=\"" + tempCodeFrag + "\" onChange={handleChange}
+                // inputProps={{ \"aria-label\": \"controlled\"}} />";
+                // tempStr = "<input value=\"" + tempCodeFrag + "\" onChange={handleChange}
+                // type=\"checkbox\"/>";
 
                 if (i != 0 && i % 2 == 0) {
-                    tempStr  = "<br>";
+                    tempStr = "<br>";
                     tempElem.before(tempStr);
                 }
-                tempStr  = "Code Fragment #" + (i + 1) + ": ";
+                tempStr = "Code Fragment #" + (i + 1) + ": ";
                 tempElem.before(tempStr);
             }
             result = editedDoc.toString();
             // For testing purposes, implement cleaner way
-            //result = result.replaceAll("onchange=\"{handleChange}\"", "onChange={handleChange}");
+            // result = result.replaceAll("onchange=\"{handleChange}\"",
+            // "onChange={handleChange}");
 
             Process p = Runtime.getRuntime().exec(new String[] { "./goodbye.sh" });
             BufferedReader stdout = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -141,7 +145,7 @@ public class QuestionHelper {
                 System.out.println(line);
             }
             while ((line = stderr.readLine()) != null) {
-                result += line + "\n";
+
             }
             p.waitFor();
 
@@ -153,15 +157,18 @@ public class QuestionHelper {
     }
 
     /**
-     * This function scrubs the Student_ID's from all of the questions in the input list.
+     * This function scrubs the Student_ID's from all of the questions in the input
+     * list.
+     * 
      * @param list: a list of questions to be scrubbed.
-     * @return the inputted list of questions with all of their Student-ID's set to 0.
+     * @return the inputted list of questions with all of their Student-ID's set to
+     *         0.
      */
 
-     public static List<Question> scrubStudentIDs(List<Question> list) {
-        for(int i = 0; i < list.size(); i++) {
+    public static List<Question> scrubStudentIDs(List<Question> list) {
+        for (int i = 0; i < list.size(); i++) {
             list.get(i).setStudentId(0);
         }
         return list;
-     }
+    }
 }
